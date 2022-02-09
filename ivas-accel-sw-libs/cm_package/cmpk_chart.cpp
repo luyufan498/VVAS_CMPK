@@ -180,7 +180,7 @@ void chart::updateDataAnalysis(){
     float min = this->points[0].data;
     float max = this->points[0].data;
 
-    for(int i=1;i< this->points.size();i++){
+    for(int i=1;(long unsigned int)i< this->points.size();i++){
         float data = this->points[i].data;
         sum += data;
         if(data >  max)
@@ -192,7 +192,7 @@ void chart::updateDataAnalysis(){
 
     this->data_min = min;
     this->data_max = max;
-    this->data_avg = sum / this->points.size();
+    this->data_avg = sum / (int)this->points.size();
 }
 
 
@@ -213,7 +213,7 @@ int chart::pushNewData(float data){
     // 存放到数据表中
     this->points.push_back(newpoint);
     // 保证画的时候头尾有存放正确的点
-    if(this->points.size() > this->maxlen + 2){
+    if(this->points.size() > (long unsigned int)this->maxlen + 2){
         this->points.erase(this->points.begin());
     }
 
@@ -228,15 +228,15 @@ int chart::calFucX2Y(uint x){
    
     int index,offset;
 
-    if(this->points.size() < this->maxlen + 2)
+    if(this->points.size() < (long unsigned int)this->maxlen + 2)
     {
         index =  (int) ((x)  /  this->x_interval);
         offset = (int) ((x)  - index * this->x_interval);   
 
-        if(index + 2 >  this->points.size())
+        if((long unsigned int)index + 2 >  this->points.size())
             return -1;
         else
-        if(index + 2 ==  this->points.size() && offset > this->refresh_offset)
+        if((long unsigned int)index + 2 ==  this->points.size() && offset > (int)this->refresh_offset)
             return -1;
     }
     else
@@ -246,7 +246,7 @@ int chart::calFucX2Y(uint x){
     
     }
 
-    if(this->points[index].y_converted.size() > offset + 1)
+    if(this->points[index].y_converted.size() > (long unsigned int)offset + 1)
     {
         return this->points[index].y_converted[offset];
     }
@@ -259,12 +259,12 @@ int chart::calFucX2Y(uint x){
 
 int chart::calFucIndex2XY(int index, int *x, int *y){
 
-    if(index >= this->points.size() || index >= this->maxlen)
+    if((long unsigned int)index >= this->points.size() || index >= this->maxlen)
         return -1;
     
     int left_offset = this->refresh_offset;
 
-    if(this->maxlen + 2 > this->points.size()){
+    if((long unsigned int)this->maxlen + 2 > this->points.size()){
         left_offset = 0;
     }
 
@@ -273,12 +273,12 @@ int chart::calFucIndex2XY(int index, int *x, int *y){
         *y = this->points[0].y_converted[left_offset];
     }
     else
-    if(index + 1 == this->points.size() )
+    if((long unsigned int)index + 1 == this->points.size() )
     {
        *x =(int) index * this->x_interval;
        *y = this->points[index-1].y_converted[this->refresh_offset];
     }
-    else if (index + 1 < this->points.size()){
+    else if ((long unsigned int)index + 1 < this->points.size()){
         *x = (int) index * this->x_interval - left_offset;     
         *y = this->points[index].y_converted[0];
     } 
@@ -292,10 +292,9 @@ int chart::update(void *usrptr){
     this->setXInterval();
     
     long long timestamp_ms = this->timestamp_ms;
-    long timestamp_frame = this->timestamp_frame;
-    long frame_cnt = this->frame_cnt;
+   
+  
 
-    long now_frame = frame_cnt;
     long long now_ms = get_time();
     
     if(this->sample_mode == 0)
@@ -483,17 +482,16 @@ int chart::drawChartYUVLine_unprotected(cv::Mat lumaImg, cv::Mat chromaImg, int 
             //  描第一个点
             // 65 - 70
             int left_offset = this->refresh_offset;
-            int right_pos = width -1;
+            
 
-            if(this->points.size() < this->maxlen + 2){
+            if(this->points.size() < (long unsigned int)this->maxlen + 2){
                 left_offset = 0;
-                // right_pos = this->refresh_offset + (int) this->x_interval * (index - 1);
             }
 
             // 除了头尾 只描固定采样点
-            for(auto index = 1; index < this->points.size(); index++){
+            for(auto index = 1; (long unsigned int)index < this->points.size(); index++){
                 int x,y;
-                if(index + 1 == this->points.size()){
+                if((long unsigned int)index + 1 == this->points.size()){
                     x = this->refresh_offset + (int) this->x_interval * (index - 1);
                     y = this->points[index - 1].y_converted[this->refresh_offset];
                     
@@ -527,17 +525,17 @@ int chart::drawChartYUVLine_unprotected(cv::Mat lumaImg, cv::Mat chromaImg, int 
             // 200 us
             
             int left_offset = this->refresh_offset;
-            int right_pos = width -1;
+           
 
-            if(this->points.size() < this->maxlen + 2){
+            if(this->points.size() < (long unsigned int)this->maxlen + 2){
                 left_offset = 0;
-                // right_pos = this->refresh_offset + (int) this->x_interval * (index - 1);
+                
             }
 
             // 除了头尾 只描固定采样点
-            for(auto index = 1; index < this->points.size(); index++){
+            for(auto index = 1; (long unsigned int)index < this->points.size(); index++){
                 int x,y;
-                if(index + 1 == this->points.size()){
+                if((long unsigned int)index + 1 == this->points.size()){
                     x = this->refresh_offset + (int) this->x_interval * (index - 1);
                     y = this->points[index - 1].y_converted[this->refresh_offset];
                     

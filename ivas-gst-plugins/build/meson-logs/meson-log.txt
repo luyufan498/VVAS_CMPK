@@ -1,4 +1,4 @@
-Build started at 2022-02-09T18:14:31.030815
+Build started at 2022-02-09T19:13:40.155126
 Main binary: /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/python3
 Build Options: -Dprefix=/usr -Dbackend=ninja
 Python system: Linux
@@ -204,8 +204,8 @@ Dependency gstreamer-allocators-1.0 found: YES 1.16.3 (cached)
 Dependency xrt found: YES 2.11.0 (cached)
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmps_q68lx8
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmps_q68lx8/testfile.c -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmps_q68lx8/output.exe -pipe --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -ldl -Wl,--end-group -Wl,--allow-shlib-undefined 
+Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpvvixlxjr
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpvvixlxjr/testfile.c -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpvvixlxjr/output.exe -pipe --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -ldl -Wl,--end-group -Wl,--allow-shlib-undefined 
 
 Code:
  int main(void) { return 0; }
@@ -217,8 +217,8 @@ Compiler stderr:
 Library dl found: YES
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpyr0mcect
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpyr0mcect/testfile.c -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpyr0mcect/output.exe -pipe --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -luuid -Wl,--end-group -Wl,--allow-shlib-undefined 
+Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmp9_ujuxbd
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmp9_ujuxbd/testfile.c -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmp9_ujuxbd/output.exe -pipe --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -luuid -Wl,--end-group -Wl,--allow-shlib-undefined 
 
 Code:
  int main(void) { return 0; }
@@ -250,8 +250,8 @@ Build targets in project: 11
 
 Found ninja-1.10.1 at /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/ninja
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpwrbe1gb_
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpwrbe1gb_/testfile.c -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpwrbe1gb_/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpgy0skmij
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpgy0skmij/testfile.c -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmpgy0skmij/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -263,8 +263,8 @@ libraries: =/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalin
 Compiler stderr:
  
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmps4buxh1u
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-g++ /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmps4buxh1u/testfile.cpp -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmps4buxh1u/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmptcdp5yvk
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-g++ /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmptcdp5yvk/testfile.cpp -o /home/catmouse/VVAS/ivas-gst-plugins/build/meson-private/tmptcdp5yvk/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  
