@@ -3,9 +3,6 @@ option('ivas_xdpuinfer', type : 'feature', value : 'auto')
 option('ivas_xboundingbox', type : 'feature', value : 'auto')
 option('ivas_crop', type : 'feature', value : 'auto')
 option('ivas_postsegmentation', type : 'feature', value : 'auto')
-option('ivas_powerstatus', type : 'feature', value : 'auto')
-option('ivas_tempstatus', type : 'feature', value : 'auto')
-option('ivas_performancestatus', type : 'feature', value : 'auto')
 option('ivas_chart', type : 'feature', value : 'auto')
 
 # ivas_xdpuinfer Model selection
