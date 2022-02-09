@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1.1 (64-bit)
+# SW Build 3286242 on Wed Jul 28 13:09:46 MDT 2021
+# IP Build 3279568 on Wed Jul 28 16:48:48 MDT 2021
+# Start of session at: Mon Nov 15 18:11:35 2021
+# Process ID: 18021
+# Current directory: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_v_tc_0_synth_1
+# Command line: vivado -log bd_f080_v_tc_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_f080_v_tc_0.tcl
+# Log file: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_v_tc_0_synth_1/bd_f080_v_tc_0.vds
+# Journal file: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_v_tc_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source bd_f080_v_tc_0.tcl -notrace

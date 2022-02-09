@@ -1,0 +1,110 @@
+
+*** Running vivado
+    with args -log xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0.tcl
+
+
+****** Vivado v2021.1.1 (64-bit)
+  **** SW Build 3286242 on Wed Jul 28 13:09:46 MDT 2021
+  **** IP Build 3279568 on Wed Jul 28 16:48:48 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2021.1/data/ip'.
+Command: synth_design -top xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0 -part xczu7ev-ffvc1156-2-e -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 16920
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 2980.008 ; gain = 49.684 ; free physical = 197 ; free virtual = 366
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0' [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0/synth/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'hdmi_hb' [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ipshared/feef/sources_1/new/hdmi_hb.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'hdmi_hb' (1#1) [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ipshared/feef/sources_1/new/hdmi_hb.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0' (2#1) [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0/synth/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0.v:57]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:13 . Memory (MB): peak = 3021.945 ; gain = 91.621 ; free physical = 565 ; free virtual = 1215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:14 . Memory (MB): peak = 3042.758 ; gain = 112.434 ; free physical = 1099 ; free virtual = 1472
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:14 . Memory (MB): peak = 3042.758 ; gain = 112.434 ; free physical = 1095 ; free virtual = 1468
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3042.758 ; gain = 0.000 ; free physical = 910 ; free virtual = 1405
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0/constrs_1/new/hdmi_hb_ooc.xdc] for cell 'inst'
+create_clock: Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 3192.414 ; gain = 0.000 ; free physical = 5642 ; free virtual = 6781
+Finished Parsing XDC File [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0/constrs_1/new/hdmi_hb_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0/constrs_1/new/hdmi_hb.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0/constrs_1/new/hdmi_hb.xdc] for cell 'inst'
+Parsing XDC File [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3192.414 ; gain = 0.000 ; free physical = 5642 ; free virtual = 6781
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3192.414 ; gain = 0.000 ; free physical = 5641 ; free virtual = 6779
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:34 . Memory (MB): peak = 3192.414 ; gain = 262.090 ; free physical = 6337 ; free virtual = 7514
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu7ev-ffvc1156-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:34 . Memory (MB): peak = 3192.414 ; gain = 262.090 ; free physical = 6326 ; free virtual = 7503
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:34 . Memory (MB): peak = 3192.414 ; gain = 262.090 ; free physical = 6322 ; free virtual = 7498
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:34 . Memory (MB): peak = 3192.414 ; gain = 262.090 ; free physical = 5736 ; free virtual = 6966
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   24 Bit       Adders := 1     
++---Registers : 
+	               24 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input   24 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1728 (col length:144)
+BRAMs: 624 (col length: RAMB18 144 RAMB36 72)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:36 . Memory (MB): peak = 3192.414 ; gain = 262.090 ; free physical = 4087 ; free virtual = 5409
+---------------------------------------------------------------------------------

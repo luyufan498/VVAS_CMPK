@@ -1,0 +1,23 @@
+<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">
+    <name>
+        <value string="prj"/>
+    </name>
+    <project>
+        <value string="xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_mix_0_0"/>
+    </project>
+    <flowTarget value="vivado"/>
+    <targetInfo>
+        <TargetInfo value="xczu7ev:-ffvc1156:-2-e"/>
+    </targetInfo>
+    <libraryList>
+        <library value="xilinx/zynquplus/zynquplus" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock name="ap_clk" period="3.333" default="false"/>
+    </clockList>
+    <config>
+        <config_interface m_axi_flush_mode="1" m_axi_conservative_mode="1" m_axi_addr64="0"/>
+        <config_rtl module_prefix="xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_mix_0_0_"/>
+    </config>
+</AutoPilot:solution>
+

@@ -1,0 +1,7 @@
+[options]
+prefix = /usr
+backend = ninja
+
+[properties]
+cross_file = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/share/meson/aarch64-xilinx-linux-meson.cross', '/home/catmouse/VVAS/ivas-utils/meson.cross']
+

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1.1 (64-bit)
+# SW Build 3286242 on Wed Jul 28 13:09:46 MDT 2021
+# IP Build 3279568 on Wed Jul 28 16:48:48 MDT 2021
+# Start of session at: Mon Nov 15 18:09:24 2021
+# Process ID: 12249
+# Current directory: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado
+# Command line: vivado -mode batch -notrace -source xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xsa.tcl
+# Log file: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/vivado.log
+# Journal file: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/vivado.jou
+#-----------------------------------------------------------
+source xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xsa.tcl -notrace

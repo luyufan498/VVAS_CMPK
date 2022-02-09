@@ -1,0 +1,26 @@
+[host_machine]
+system = 'linux'
+cpu_family = 'aarch64'
+cpu = 'arm64'
+endian = 'little'
+
+[build_machine]
+system = 'linux'
+cpu_family = 'x86_64'
+cpu = 'x86_64'
+endian = 'little'
+
+[properties]
+c_args = ['--sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux']
+cpp_args = ['--sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux']
+c_link_args = ['--sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux','-L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib', '-L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib']
+cpp_link_args = ['--sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux','-L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib', '-L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib']
+pkg_config_libdir = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib/pkgconfig:/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/share/pkgconfig']
+sys_root = '/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux'
+
+[binaries]
+c = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc']
+cpp = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-g++']
+ar = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-ar']
+pkgconfig = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/pkg-config']
+strip = ['/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-strip']

@@ -1,0 +1,7 @@
+#config_rtl -enable_axiFlushable
+config_interface -m_axi_flush_mode
+config_interface -m_axi_conservative_mode
+
+#config_interface -input_reg_miode both -output_reg_mode both
+config_interface -m_axi_addr64=false
+

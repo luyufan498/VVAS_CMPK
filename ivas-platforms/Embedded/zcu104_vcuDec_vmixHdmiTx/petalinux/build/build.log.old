@@ -1,0 +1,9 @@
+[INFO] Sourcing buildtools
+[INFO] Building project
+[INFO] Generating Kconfig for project
+ERROR: Hardware description file "" doesn't exist.
+Please run 'petalinux-config --get-hw-description[=VIVADO_EXPORT_TO_SDK_DIR]' to pass the hardware description file to the project.
+
+ERROR: Failed to generate /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/petalinux/build/misc/config/Kconfig.syshw
+ERROR: Failed to Kconfig project
+ERROR: Failed to build project. Check the /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/petalinux/build/build.log file for more details...

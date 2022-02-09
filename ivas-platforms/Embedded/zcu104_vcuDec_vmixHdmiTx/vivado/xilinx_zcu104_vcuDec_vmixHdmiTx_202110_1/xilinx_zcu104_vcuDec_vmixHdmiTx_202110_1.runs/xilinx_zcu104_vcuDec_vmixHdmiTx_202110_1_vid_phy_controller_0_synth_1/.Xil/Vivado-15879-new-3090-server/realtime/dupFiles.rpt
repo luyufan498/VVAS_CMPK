@@ -1,0 +1,2 @@
+Duplicated file found; will not be sent for synthesis: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vid_phy_controller_0/synth/vid_phy_controller_v2_2_11_defs.v
+CRC performance measure: elapsed=00:00:00s;;memory_peak=2937.289MB;;memory_gain=0.000MB

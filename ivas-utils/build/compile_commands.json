@@ -1,0 +1,14 @@
+[
+  {
+    "directory": "/home/catmouse/VVAS/ivas-utils/build",
+    "command": "/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -Iutils/libxrtutil.so.p -Iutils -I../utils -I. -I.. -I/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr//usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -O2 -g -Wmissing-declarations -Wredundant-decls -Wwrite-strings -Winit-self -Wno-multichar -Wvla -Wpointer-arith -Wmissing-prototypes -Wdeclaration-after-statement -Wold-style-definition -Waggregate-return --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -fPIC -DHAVE_CONFIG_H -MD -MQ utils/libxrtutil.so.p/xrt_utils.c.o -MF utils/libxrtutil.so.p/xrt_utils.c.o.d -o utils/libxrtutil.so.p/xrt_utils.c.o -c ../utils/xrt_utils.c",
+    "file": "../utils/xrt_utils.c",
+    "output": "utils/libxrtutil.so.p/xrt_utils.c.o"
+  },
+  {
+    "directory": "/home/catmouse/VVAS/ivas-utils/build",
+    "command": "/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -Iutils/libivasutil.so.p -Iutils -I../utils -I. -I.. -I/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr//usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -O2 -g -Wmissing-declarations -Wredundant-decls -Wwrite-strings -Winit-self -Wno-multichar -Wvla -Wpointer-arith -Wmissing-prototypes -Wdeclaration-after-statement -Wold-style-definition -Waggregate-return --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -fPIC -DHAVE_CONFIG_H -MD -MQ utils/libivasutil.so.p/ivas_kernel_utils.c.o -MF utils/libivasutil.so.p/ivas_kernel_utils.c.o.d -o utils/libivasutil.so.p/ivas_kernel_utils.c.o -c ../utils/ivas_kernel_utils.c",
+    "file": "../utils/ivas_kernel_utils.c",
+    "output": "utils/libivasutil.so.p/ivas_kernel_utils.c.o"
+  }
+]

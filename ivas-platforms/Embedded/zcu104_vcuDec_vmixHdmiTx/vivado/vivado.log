@@ -1,0 +1,341 @@
+#-----------------------------------------------------------
+# Vivado v2021.1.1 (64-bit)
+# SW Build 3286242 on Wed Jul 28 13:09:46 MDT 2021
+# IP Build 3279568 on Wed Jul 28 16:48:48 MDT 2021
+# Start of session at: Mon Nov 15 18:09:24 2021
+# Process ID: 12249
+# Current directory: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado
+# Command line: vivado -mode batch -notrace -source xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xsa.tcl
+# Log file: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/vivado.log
+# Journal file: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/vivado.jou
+#-----------------------------------------------------------
+source xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xsa.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2021.1/data/ip'.
+INFO: [BD_TCL-3] Currently there is no design <xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1> in project, so creating one...
+WARNING: [BD 41-1753] The name 'xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1' you have specified is long. The Windows OS has path length limitations. It is recommended you use shorter names(less than 25 characters) to reduce the likelihood of issues when/if running on windows OS.
+Wrote  : </home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.srcs/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.bd> 
+INFO: [BD_TCL-4] Making design <xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1> as current_bd_design.
+INFO: [BD_TCL-5] Currently the variable <design_name> is equal to "xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1".
+INFO: [BD_TCL-6] Checking if the following IPs exist in the project's IP catalog:  
+xilinx.com:ip:axi_intc:* xilinx.com:ip:clk_wiz:* xilinx.com:ip:xlconstant:* xilinx.com:ip:axi_iic:* xilinx.com:ip:proc_sys_reset:* xilinx.com:ip:zynq_ultra_ps_e:* xilinx.com:ip:vcu:* xilinx.com:ip:xlconcat:* xilinx.com:ip:xlslice:* xilinx.com:user:hdmi_hb:* xilinx.com:ip:v_hdmi_tx_ss:* xilinx.com:ip:v_mix:* xilinx.com:ip:vid_phy_controller:*  .
+create_bd_cell: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 3157.066 ; gain = 427.922 ; free physical = 26546 ; free virtual = 28369
+INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
+create_bd_cell: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 3453.766 ; gain = 244.281 ; free physical = 26248 ; free virtual = 28093
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/tx_hdmi_hb_0/status_sb_tdata> is being overridden by the user with net <vid_phy_controller_vid_phy_status_sb_tx_tdata>. This pin will not be connected as a part of interface connection <status_sb>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/v_hdmi_tx_ss_0/SB_STATUS_IN_tdata> is being overridden by the user with net <vid_phy_controller_vid_phy_status_sb_tx_tdata>. This pin will not be connected as a part of interface connection <SB_STATUS_IN>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/vid_phy_controller/vid_phy_status_sb_tx_tdata> is being overridden by the user with net <vid_phy_controller_vid_phy_status_sb_tx_tdata>. This pin will not be connected as a part of interface connection <vid_phy_status_sb_tx>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/tx_hdmi_hb_0/status_sb_tvalid> is being overridden by the user with net <vid_phy_controller_vid_phy_status_sb_tx_tvalid>. This pin will not be connected as a part of interface connection <status_sb>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/v_hdmi_tx_ss_0/SB_STATUS_IN_tvalid> is being overridden by the user with net <vid_phy_controller_vid_phy_status_sb_tx_tvalid>. This pin will not be connected as a part of interface connection <SB_STATUS_IN>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/vid_phy_controller/vid_phy_status_sb_tx_tvalid> is being overridden by the user with net <vid_phy_controller_vid_phy_status_sb_tx_tvalid>. This pin will not be connected as a part of interface connection <vid_phy_status_sb_tx>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/v_mix_0/s_axis_video_TDATA> is being overridden by the user with net <xlconstant_1_dout>. This pin will not be connected as a part of interface connection <s_axis_video>.
+WARNING: [BD 41-1306] The connection to interface pin </hdmi_output/v_mix_0/s_axis_video_TVALID> is being overridden by the user with net <xlconstant_1_dout>. This pin will not be connected as a part of interface connection <s_axis_video>.
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [PSU-1]  DP_AUDIO clock source: RPLL is also being used by other peripheral clocks. Their outputs may get impacted if any driver changes DP_AUDIO PLL source to support runtime audio change 
+INFO: [xilinx.com:ip:vcu:1.2-17] /vcu_0: Init 
+WARNING: [BD 41-1306] The connection to interface pin </ps_e/emio_gpio_o> is being overridden by the user with net <ps_e_emio_gpio_o>. This pin will not be connected as a part of interface connection <GPIO_0>.
+Slave segment '/axi_intc_0/S_AXI/Reg' is being assigned into address space '/ps_e/Data' at <0x8002_0000 [ 4K ]>.
+Slave segment '/hdmi_ctrl_iic/S_AXI/Reg' is being assigned into address space '/ps_e/Data' at <0xA012_0000 [ 64K ]>.
+Slave segment '/hdmi_output/v_hdmi_tx_ss_0/S_AXI_CPU_IN/Reg' is being assigned into address space '/ps_e/Data' at <0xA010_0000 [ 128K ]>.
+Slave segment '/hdmi_output/v_mix_0/s_axi_CTRL/Reg' is being assigned into address space '/ps_e/Data' at <0xA013_0000 [ 64K ]>.
+Slave segment '/vcu_0/S_AXI_LITE/Reg' is being assigned into address space '/ps_e/Data' at <0xA000_0000 [ 1M ]>.
+Slave segment '/hdmi_output/vid_phy_controller/vid_phy_axi4lite/Reg' is being assigned into address space '/ps_e/Data' at <0xA014_0000 [ 64K ]>.
+Slave segment '/ps_e/SAXIGP3/HP1_DDR_LOW' is being assigned into address space '/vcu_0/DecData0' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP3/HP1_DDR_LOW' is being assigned into address space '/vcu_0/DecData1' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP3/HP1_LPS_OCM' is being assigned into address space '/vcu_0/DecData0' at <0xFF00_0000 [ 16M ]>.
+Slave segment '/ps_e/SAXIGP3/HP1_LPS_OCM' is being assigned into address space '/vcu_0/DecData1' at <0xFF00_0000 [ 16M ]>.
+Slave segment '/ps_e/SAXIGP3/HP1_QSPI' is being assigned into address space '/vcu_0/DecData0' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP3/HP1_QSPI' is being assigned into address space '/vcu_0/DecData1' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP6/LPD_DDR_LOW' is being assigned into address space '/vcu_0/Code' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP6/LPD_LPS_OCM' is being assigned into address space '/vcu_0/Code' at <0xFF00_0000 [ 16M ]>.
+Slave segment '/ps_e/SAXIGP6/LPD_QSPI' is being assigned into address space '/vcu_0/Code' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video2' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video9' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video3' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video4' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video8' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video5' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video1' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video6' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video7' at <0x0000_0000 [ 2G ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video5' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video9' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video8' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video7' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video6' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video4' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video3' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video2' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_QSPI' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video1' at <0xC000_0000 [ 512M ]>.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video1' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video1.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video2' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video2.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video3' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video3.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video4' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video4.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video5' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video5.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video6' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video6.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video7' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video7.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video8' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video8.
+Slave segment '/ps_e/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/hdmi_output/v_mix_0/Data_m_axi_mm_video9' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /ps_e/SAXIGP0/HPC0_LPS_OCM from address space /hdmi_output/v_mix_0/Data_m_axi_mm_video9.
+WARNING: [IP_Flow 19-4684] Expected long value for param HDL_PLL_CLK_LO but, float/scientific notation value 32.99999999999983 is provided. The value is converted to long type(32)
+WARNING: [IP_Flow 19-4684] Expected long value for param HDL_PLL_CLK_HI but, float/scientific notation value 33.0 is provided. The value is converted to long type(33)
+INFO: [xilinx.com:ip:vcu:1.2-603] xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0:  in flao2hex  update method .. 0.0 
+INFO: [xilinx.com:ip:vcu:1.2-603] xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0:  in HDL_AXI_ENC_CLK  update method ..0 
+INFO: [xilinx.com:ip:vcu:1.2-603] xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0:  in HDL_AXI_DEC_CLK  update method ..0 
+INFO: [xilinx.com:ip:vcu:1.2-603] xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0:  in flao2hex  update method .. 3.0 
+INFO: [xilinx.com:ip:vcu:1.2-603] xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0:  in HDL_AXI_MCU_CLK  update method ..1077936128 
+WARNING: [BD 5-699] No address segments matched 'get_bd_addr_segs -of_object /ps_e/SAXIGP0/HPC0_LPS_OCM'
+INFO: [PSU-1]  DP_AUDIO clock source: RPLL is also being used by other peripheral clocks. Their outputs may get impacted if any driver changes DP_AUDIO PLL source to support runtime audio change 
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+INFO: [xilinx.com:ip:vcu:1.2-17] /vcu_0:Pre-Propagate  .
+INFO: [xilinx.com:ip:vcu:1.2-17] /vcu_0: Post Propogate  .
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /axi_interconnect/s00_couplers/auto_ds/S_AXI(0) and /ps_e/M_AXI_HPM0_FPD(16)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /axi_interconnect/s00_couplers/auto_ds/S_AXI(0) and /ps_e/M_AXI_HPM0_FPD(16)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /interconnect_axilite/s00_couplers/auto_pc/S_AXI(0) and /ps_e/M_AXI_HPM0_LPD(16)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /interconnect_axilite/s00_couplers/auto_pc/S_AXI(0) and /ps_e/M_AXI_HPM0_LPD(16)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /ps_e/S_AXI_LPD(1) and /vcu_0/M_AXI_MCU(0)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /ps_e/S_AXI_LPD(1) and /vcu_0/M_AXI_MCU(0)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /ps_e/S_AXI_HPC0_FPD(1) and /axi_interconnect_0/xbar/M00_AXI(0)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /ps_e/S_AXI_HPC0_FPD(1) and /axi_interconnect_0/xbar/M00_AXI(0)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /ps_e/S_AXI_HP1_FPD(1) and /axi_interconnect_1/m00_couplers/m00_regslice/M_AXI(0)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /ps_e/S_AXI_HP1_FPD(1) and /axi_interconnect_1/m00_couplers/m00_regslice/M_AXI(0)
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/axi_intc_0/intr
+
+Wrote  : </home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.srcs/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.bd> 
+INFO: [BD 41-1662] The design 'xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.bd' is already validated. Therefore parameter propagation will not be re-run.
+CRITICAL WARNING: [BD 41-759] The input pins (listed below) are either not connected or do not have a source port, and they don't have a tie-off specified. These pins are tied-off to all 0's to avoid error in Implementation flow.
+Please check your design and connect them as needed: 
+/axi_intc_0/intr
+
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s06_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s06_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s06_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s06_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s07_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s07_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s07_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s07_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s08_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s08_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s08_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s08_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/m_axi_rid'(5) to pin: '/axi_interconnect_0/m00_couplers/S_AXI_rid'(6) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/m_axi_bid'(5) to pin: '/axi_interconnect_0/m00_couplers/S_AXI_bid'(6) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/s00_couplers/s00_regslice/m_axi_rid'(4) to pin: '/axi_interconnect_1/s00_couplers/M_AXI_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/s00_couplers/s00_regslice/m_axi_bid'(4) to pin: '/axi_interconnect_1/s00_couplers/M_AXI_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/s01_couplers/s01_regslice/m_axi_rid'(4) to pin: '/axi_interconnect_1/s01_couplers/M_AXI_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/s01_couplers/s01_regslice/m_axi_bid'(4) to pin: '/axi_interconnect_1/s01_couplers/M_AXI_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/m00_couplers/m00_regslice/m_axi_rid'(5) to pin: '/axi_interconnect_1/m00_couplers/M_AXI_rid'(6) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/m00_couplers/m00_regslice/m_axi_bid'(5) to pin: '/axi_interconnect_1/m00_couplers/M_AXI_bid'(6) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_1/s00_couplers/M_AXI_awid'(4) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_1/s00_couplers/M_AXI_arid'(4) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_1/s01_couplers/M_AXI_awid'(4) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_1/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_1/s01_couplers/M_AXI_arid'(4) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video1_RID'(1) to pin: '/hdmi_output/m_axi_mm_video1_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video1_BID'(1) to pin: '/hdmi_output/m_axi_mm_video1_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video2_RID'(1) to pin: '/hdmi_output/m_axi_mm_video2_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video2_BID'(1) to pin: '/hdmi_output/m_axi_mm_video2_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video3_RID'(1) to pin: '/hdmi_output/m_axi_mm_video3_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video3_BID'(1) to pin: '/hdmi_output/m_axi_mm_video3_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video4_RID'(1) to pin: '/hdmi_output/m_axi_mm_video4_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video4_BID'(1) to pin: '/hdmi_output/m_axi_mm_video4_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video5_RID'(1) to pin: '/hdmi_output/m_axi_mm_video5_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video5_BID'(1) to pin: '/hdmi_output/m_axi_mm_video5_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video6_RID'(1) to pin: '/hdmi_output/m_axi_mm_video6_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video6_BID'(1) to pin: '/hdmi_output/m_axi_mm_video6_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video7_RID'(1) to pin: '/hdmi_output/m_axi_mm_video7_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video7_BID'(1) to pin: '/hdmi_output/m_axi_mm_video7_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video8_RID'(1) to pin: '/hdmi_output/m_axi_mm_video8_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video8_BID'(1) to pin: '/hdmi_output/m_axi_mm_video8_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video9_RID'(1) to pin: '/hdmi_output/m_axi_mm_video9_rid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/hdmi_output/v_mix_0/m_axi_mm_video9_BID'(1) to pin: '/hdmi_output/m_axi_mm_video9_bid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/ps_e/saxigp0_awid'(6) to pin: '/axi_interconnect_0/M00_AXI_awid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/ps_e/saxigp0_arid'(6) to pin: '/axi_interconnect_0/M00_AXI_arid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/ps_e/saxigp3_awid'(6) to pin: '/axi_interconnect_1/M00_AXI_awid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/ps_e/saxigp3_arid'(6) to pin: '/axi_interconnect_1/M00_AXI_arid'(5) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/ps_e/saxigp6_awid'(6) to pin: '/interconnect_axifull/M00_AXI_awid'(3) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/ps_e/saxigp6_arid'(6) to pin: '/interconnect_axifull/M00_AXI_arid'(3) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/vcu_0/pl_vcu_mcu_m_axi_ic_dc_rid'(3) to pin: '/interconnect_axifull/S00_AXI_rid'(6) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/vcu_0/pl_vcu_mcu_m_axi_ic_dc_bid'(3) to pin: '/interconnect_axifull/S00_AXI_bid'(6) - Only lower order bits will be connected.
+VHDL Output written to : /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/synth/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.v
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s00_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s01_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s02_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s03_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s04_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awlock'(1) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_awlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arid'(5) to pin: '/axi_interconnect_0/s05_couplers/M_AXI_arid'(1) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_arlock'(1) to pin: '/axi_interconnect_0/s06_couplers/M_AXI_arlock'(2) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/axi_interconnect_0/xbar/s_axi_awid'(5) to pin: '/axi_interconnect_0/s06_couplers/M_AXI_awid'(1) - Only lower order bits will be connected.
+INFO: [Common 17-14] Message 'BD 41-2384' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+VHDL Output written to : /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/sim/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.v
+VHDL Output written to : /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/hdl/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_intc_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/xbar .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_ds_0/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_ds_0_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/s00_couplers/auto_ds .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_0/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_0/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_0_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/m01_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_1_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/m02_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_2/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_2_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/m03_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_3/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_3_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect/m04_couplers/auto_cc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_1/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_1/s00_couplers/s00_regslice .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_1/s01_couplers/s01_regslice .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_1/m00_couplers/m00_regslice .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_wiz_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block gnd_const .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block gpio_aresetn/tx_frmbuf_rd_aresetn_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_ctrl_iic .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_output/tx_hdmi_hb_0 .
+WARNING: [IP_Flow 19-650] IP license key 'v_hdmi@2017.10' is enabled with a Design_Linking license.
+WARNING: [IP_Flow 19-650] IP license key 'v_hdmi@2017.10' is enabled with a Design_Linking license.
+Exporting to file /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0/bd_0/hw_handoff/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0.hwh
+Generated Block Design Tcl file /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0/bd_0/hw_handoff/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0_bd.tcl
+Generated Hardware Definition File /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0/bd_0/synth/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_output/v_hdmi_tx_ss_0 .
+WARNING: [IP_Flow 19-1971] File named "sim/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_mix_0_0.v" already exists in file group "xilinx_verilogsimulationwrapper", cannot add it again.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_output/v_mix_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_output/vid_phy_controller .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_output/xlconstant_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hdmi_output/xlconstant_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/ip/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block interconnect_axilite/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_3 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_4 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_5 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_6 .
+INFO: [xilinx.com:ip:zynq_ultra_ps_e:3.3-0] xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_ps_e_0: 
+Changes in your design (including the PCW configuration settings) are not automatically exported from Vivado to Xilinx's SDK, Petalinux or Yocto.
+This is by design to avoid disrupting existing embedded development efforts. To have any changes of your design taking effect in the embedded software flow please export your
+design by going through Vivado's main menu, click on File, then Export finally select Export Hardware, please ensure you click on the Include BitStream option.
+The auto-generated HDF file is all you need to import in Xilinx's SDK, Petalinux or Yocto for your changes to be reflected in the Embedded Software Flow.
+For more information, please consult PG201, section: Exporting PCW Settings to Embedded Software Flows
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_HPM0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_HPM0_LPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HPC0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HP1_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_LPD'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps_e .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps_e_100M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vcu_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+Exporting to file /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/hw_handoff/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.hwh
+Generated Block Design Tcl file /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/hw_handoff/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_bd.tcl
+Generated Hardware Definition File /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/synth/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.hwdef
+generate_target: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 3683.020 ; gain = 93.598 ; free physical = 25962 ; free virtual = 27945
+INFO: [Project 1-1716] Could not find the wrapper file ./xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.srcs/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/hdl/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_wrapper.v, checking in project .gen location instead.
+INFO: [Vivado 12-12390] Found file ./xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.gen/sources_1/bd/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/hdl/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_wrapper.v, adding it to Project
+[Mon Nov 15 18:10:41 2021] Launched xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_mix_0_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vid_phy_controller_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_0_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_1_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_1_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_2_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_3_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_4_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_5_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_6_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_rst_ps_e_100M_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_ps_e_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_s00_regslice_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_s01_regslice_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_m00_regslice_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_clk_wiz_0_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_hdmi_ctrl_iic_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0_synth_1, bd_f080_v_hdmi_tx_0_synth_1, bd_f080_v_tc_0_synth_1, bd_f080_v_axi4s_vid_out_0_synth_1, bd_f080_util_vector_logic_0_0_synth_1, bd_f080_axi_crossbar_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_2_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_axi_intc_0_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_1_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_3_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_2_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_1_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_ds_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_0_synth_1, xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_0_synth_1, synth_1...
+Run output will be captured here:
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_mix_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_mix_0_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vid_phy_controller_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vid_phy_controller_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_0_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_1_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_1_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_1_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_1_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_2_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_2_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_3_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_3_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_4_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_4_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_5_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_5_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_6_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_proc_sys_reset_6_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_rst_ps_e_100M_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_rst_ps_e_100M_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_ps_e_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_ps_e_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_s00_regslice_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_s00_regslice_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_s01_regslice_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_s01_regslice_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_m00_regslice_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_m00_regslice_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_clk_wiz_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_clk_wiz_0_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_hdmi_ctrl_iic_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_hdmi_ctrl_iic_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_tx_hdmi_hb_0_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_v_hdmi_tx_ss_0_0_synth_1/runme.log
+bd_f080_v_hdmi_tx_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_v_hdmi_tx_0_synth_1/runme.log
+bd_f080_v_tc_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_v_tc_0_synth_1/runme.log
+bd_f080_v_axi4s_vid_out_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_v_axi4s_vid_out_0_synth_1/runme.log
+bd_f080_util_vector_logic_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_util_vector_logic_0_0_synth_1/runme.log
+bd_f080_axi_crossbar_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/bd_f080_axi_crossbar_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_vcu_0_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_2_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_2_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_axi_intc_0_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_axi_intc_0_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_1_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_1_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_3_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_3_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_2_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_2_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_1_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_1_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_xbar_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_ds_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_ds_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_pc_0_synth_1/runme.log
+xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_0_synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1_auto_cc_0_synth_1/runme.log
+synth_1: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/synth_1/runme.log
+[Mon Nov 15 18:10:41 2021] Launched impl_1...
+Run output will be captured here: /home/catmouse/VVAS/ivas-platforms/Embedded/zcu104_vcuDec_vmixHdmiTx/vivado/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1/xilinx_zcu104_vcuDec_vmixHdmiTx_202110_1.runs/impl_1/runme.log
+[Mon Nov 15 18:10:41 2021] Waiting for impl_1 to finish...

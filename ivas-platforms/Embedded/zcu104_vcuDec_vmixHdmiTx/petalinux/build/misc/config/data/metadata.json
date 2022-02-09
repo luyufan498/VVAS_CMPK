@@ -1,0 +1,119 @@
+{
+"default": {
+	"linux-xlnx": {
+		"RDEPENDS_${KERNEL_PACKAGE_NAME}-base": ["=","1",""]
+	},
+	"device-tree": {
+		"CONFIG_DISABLE_pn-device-tree": ["=","!CONFIG_SUBSYSTEM_AUTOCONFIG_DEVICE__TREE","1"],
+		"XSCTH_WS_pn-device-tree": ["=","1","${SYSCONFIG_PATH}/../../components/plnx_workspace/device-tree"],
+		"YAML_CONSOLE_DEVICE_CONFIG_${MACHINE}_pn-device-tree": ["=","!CONFIG_SUBSYSTEM_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_IP_NAME"],
+		"YAML_MAIN_MEMORY_CONFIG_${MACHINE}_pn-device-tree": ["=","!CONFIG_SUBSYSTEM_MEMORY_MANUAL_SELECT","CONFIG_SUBSYSTEM_MEMORY_IP_NAME"],
+		"YAML_ENABLE_DT_OVERLAY_pn-device-tree": ["=","CONFIG_SUBSYSTEM_DTB_OVERLAY","1"],
+		"YAML_ENABLE_NO_ALIAS": ["=","CONFIG_SUBSYSTEM_ENABLE_NO_ALIAS","1"],
+		"EXTRA_DT_FILES": ["+=","CONFIG_SUBSYSTEM_AUTOCONFIG_DEVICE__TREE","CONFIG_SUBSYSTEM_EXTRA_DT_FILES"],
+		"YAML_REMOVE_PL_DT_pn-device-tree": ["=","CONFIG_SUBSYSTEM_REMOVE_PL_DTB","1"],
+		"DT_PADDING_SIZE_pn-device-tree": ["=","1","CONFIG_SUBSYSTEM_DTB_PADDING_SIZE"],
+		"DTC_FLAGS_pn-device-tree": ["+=","1","CONFIG_SUBSYSTEM_DEVICETREE_COMPILER_FLAGS"],
+		"kernel_includepath_pn-device-tree": ["=","CONFIG_SUBSYSTEM_DEVICE_TREE_MANUAL_INCLUDE","CONFIG_SUBSYSTEM_DEVICE_TREE_INCLUDE_DIR"],
+		"KERNEL_INCLUDE_append_pn-device-tree": ["=","CONFIG_SUBSYSTEM_DEVICE_TREE_MANUAL_INCLUDE"," ${kernel_includepath}"]
+		},
+	"busybox": {
+		"FILESEXTRAPATHS_prepend_pn-busybox": [":=","1","${SYSCONFIG_PATH}/busybox:"]
+		},
+	"init-ifupdown": {
+		"FILESEXTRAPATHS_prepend_pn-init-ifupdown": [":=","1","${SYSCONFIG_PATH}/init-ifupdown:"]
+		},
+	"ubi/ubifs": {
+		"MKUBIFS_ARGS": ["=","CONFIG_SUBSYSTEM_ROOTFS_UBIFS","CONFIG_SUBSYSTEM_UBI_MKUBIFS_ARGS"],
+		"UBINIZE_ARGS": ["=","CONFIG_SUBSYSTEM_ROOTFS_UBIFS","CONFIG_SUBSYSTEM_UBI_UBINIZE_ARGS"],
+		"UBI_VOLNAME": ["=","CONFIG_SUBSYSTEM_ROOTFS_UBIFS","CONFIG_SUBSYSTEM_UBI_PART_NAME"]
+		}
+	},
+
+"versal": {
+	"arm-trusted-firmware": {
+		"FILESEXTRAPATHS_append_pn-arm-trusted-firmware": ["=","1",":${SYSCONFIG_PATH}"],
+		"SRC_URI_append_pn-arm-trusted-firmware": ["=","1"," file://config"],
+		"extra_settings_pn-arm-trusted-firmware": ["=","1","CONFIG_SUBSYSTEM_ATF_EXTRA_COMPILER_FLAGS"],
+		"ATF_CONSOLE_${MACHINE}": ["=","!CONFIG_SUBSYSTEM_ATF_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_ATF_IP_NAME"],
+		"ATF_MEM_BASE_${MACHINE}": ["=","CONFIG_SUBSYSTEM_ATF_MEMORY_SETTINGS","CONFIG_SUBSYSTEM_ATF_MEM_BASE"],
+		"ATF_MEM_SIZE_${MACHINE}": ["=","CONFIG_SUBSYSTEM_ATF_MEMORY_SETTINGS","CONFIG_SUBSYSTEM_ATF_MEM_SIZE"],
+		"atf_bl33_load_pn-arm-trusted-firmware": ["=","1","CONFIG_SUBSYSTEM_PRELOADED_BL33_BASE"],
+		"EXTRA_OEMAKE_append_pn-arm-trusted-firmware": ["=","1"," ${extra_settings} PRELOADED_BL33_BASE=${atf_bl33_load}"],
+		"DEBUG_pn-arm-trusted-firmware": ["=","CONFIG_SUBSYSTEM_ATF_DEBUG","1"]
+		},
+	"plm-firmware": {
+		"YAML_SERIAL_CONSOLE_STDIN_${MACHINE}_pn-plm-firmware": ["=","!CONFIG_SUBSYSTEM_PLM_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_PLM_IP_NAME"],
+		"YAML_SERIAL_CONSOLE_STDOUT_${MACHINE}_pn-plm-firmware": ["=","!CONFIG_SUBSYSTEM_PLM_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_PLM_IP_NAME"]
+		}
+	},
+
+"zynqmp": {
+	"arm-trusted-firmware": {
+		"FILESEXTRAPATHS_append_pn-arm-trusted-firmware": ["=","1",":${SYSCONFIG_PATH}"],
+		"SRC_URI_append_pn-arm-trusted-firmware": ["=","1"," file://config"],
+		"extra_settings_pn-arm-trusted-firmware": ["=","1","CONFIG_SUBSYSTEM_ATF_EXTRA_COMPILER_FLAGS"],
+		"ATF_CONSOLE_${MACHINE}": ["=","!CONFIG_SUBSYSTEM_ATF_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_ATF_IP_NAME"],
+		"ATF_MEM_BASE_${MACHINE}": ["=","CONFIG_SUBSYSTEM_ATF_MEMORY_SETTINGS","CONFIG_SUBSYSTEM_ATF_MEM_BASE"],
+		"ATF_MEM_SIZE_${MACHINE}": ["=","CONFIG_SUBSYSTEM_ATF_MEMORY_SETTINGS","CONFIG_SUBSYSTEM_ATF_MEM_SIZE"],
+		"atf_bl33_load_pn-arm-trusted-firmware": ["=","1","CONFIG_SUBSYSTEM_PRELOADED_BL33_BASE"],
+		"EXTRA_OEMAKE_append_pn-arm-trusted-firmware": ["=","1"," ${extra_settings} PRELOADED_BL33_BASE=${atf_bl33_load}"],
+		"DEBUG_pn-arm-trusted-firmware": ["=","CONFIG_SUBSYSTEM_ATF_DEBUG","1"]
+		},
+	"pmu-firmware": {
+		"extra_settings_pn-pmu-firmware": ["=","1","CONFIG_SUBSYSTEM_PMUFW_COMPILER_EXTRA_FLAGS"],
+		"YAML_COMPILER_FLAGS_append_pn-pmu-firmware":["=","1"," ${extra_settings}"],
+		"YAML_SERIAL_CONSOLE_STDIN_${MACHINE}_pn-pmu-firmware": ["=","!CONFIG_SUBSYSTEM_PMUFW_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_PMUFW_IP_NAME"],
+		"YAML_SERIAL_CONSOLE_STDOUT_${MACHINE}_pn-pmu-firmware": ["=","!CONFIG_SUBSYSTEM_PMUFW_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_PMUFW_IP_NAME"]
+	},
+	"fsbl":{
+		"bsp_compiler_flags_pn-fsbl": ["=","CONFIG_SUBSYSTEM_FSBL_BSPCOMPILER_FLAGSSET","CONFIG_SUBSYSTEM_FSBL_BSPCOMPILER_FLAGS"],
+		"YAML_BSP_COMPILER_FLAGS_append_pn-fsbl": ["=","CONFIG_SUBSYSTEM_FSBL_BSPCOMPILER_FLAGSSET"," ${bsp_compiler_flags}"],
+		"YAML_SERIAL_CONSOLE_STDIN_${MACHINE}_pn-fsbl": ["=","!CONFIG_SUBSYSTEM_FSBL_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_FSBL_IP_NAME"],
+		"YAML_SERIAL_CONSOLE_STDOUT_${MACHINE}_pn-fsbl": ["=","!CONFIG_SUBSYSTEM_FSBL_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_FSBL_IP_NAME"],
+
+		"compilerflags_pn-fsbl": ["=","1","CONFIG_SUBSYSTEM_FSBL_COMPILER_EXTRA_FLAGS"],
+		"YAML_COMPILER_FLAGS_append_pn-fsbl": ["=","1"," ${compilerflags}"]
+	}
+},
+
+"zynq": {
+	"fsbl": {
+		"bsp_compiler_flags_pn-fsbl": ["=","CONFIG_SUBSYSTEM_FSBL_BSPCOMPILER_FLAGSSET","CONFIG_SUBSYSTEM_FSBL_BSPCOMPILER_FLAGS"],
+		"YAML_BSP_COMPILER_FLAGS_append_pn-fsbl": ["=","CONFIG_SUBSYSTEM_FSBL_BSPCOMPILER_FLAGS"," ${extra_settings}"],
+		"compilerflags_pn-pn-fsbl": ["=","1","CONFIG_SUBSYSTEM_FSBL_COMPILER_EXTRA_FLAGS"],
+		"YAML_COMPILER_FLAGS_append_pn-fsbl": ["=","1"," ${compilerflags}"],
+		"YAML_SERIAL_CONSOLE_STDIN_${MACHINE}_pn-fsbl": ["=","!CONFIG_SUBSYSTEM_FSBL_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_FSBL_IP_NAME"],
+
+		"YAML_SERIAL_CONSOLE_STDOUT_${MACHINE}_pn-fsbl": ["=","!CONFIG_SUBSYSTEM_FSBL_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_FSBL_IP_NAME"]
+	}
+},
+
+"microblaze": {
+	"u-boot-xlnx": {
+		"FILESEXTRAPATHS_prepend_pn-u-boot-xlnx": [":=","CONFIG_SUBSYSTEM_AUTOCONFIG_U__BOOT","${SYSCONFIG_PATH}/u-boot-xlnx:"],
+		"SRC_URI_append_pn-u-boot-xlnx": ["=","CONFIG_SUBSYSTEM_AUTOCONFIG_U__BOOT"," file://config.cfg file://platform-auto.h file://config.mk"],
+		"U_BOOT_AUTO_CONFIG_pn-u-boot-xlnx": ["=","CONFIG_SUBSYSTEM_AUTOCONFIG_U__BOOT","1"]
+		},
+	"linux-xlnx": {
+		"FILESEXTRAPATHS_prepend_pn-linux-xlnx": [":=","CONFIG_SUBSYSTEM_AUTOCONFIG_KERNEL","${SYSCONFIG_PATH}/linux-xlnx:"],
+		"SRC_URI_append_pn-linux-xlnx": ["=","CONFIG_SUBSYSTEM_AUTOCONFIG_KERNEL"," file://plnx_kernel.cfg"],
+		"KERNEL_AUTO_CONFIG_pn-linux-xlnx": ["=","CONFIG_SUBSYSTEM_AUTOCONFIG_KERNEL","1"]
+		},
+	"fs-boot": {
+		"YAML_FILE_PATH_pn-fs-boot": ["=","1","${WORKDIR}/fsboot.yaml"],
+		"YAML_SERIAL_CONSOLE_STDIN_${MACHINE}_pn-fs-boot": ["=","!CONFIG_SUBSYSTEM_FSBOOT_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_FSBOOT_IP_NAME"],
+		"YAML_SERIAL_CONSOLE_STDOUT_${MACHINE}_pn-fs-boot": ["=","!CONFIG_SUBSYSTEM_FSBOOT_SERIAL_MANUAL_SELECT","CONFIG_SUBSYSTEM_SERIAL_FSBOOT_IP_NAME"],
+		"YAML_MAIN_MEMORY_CONFIG_${MACHINE}_pn-fs-boot": ["=","!CONFIG_SUBSYSTEM_MEMORY_MANUAL_SELECT","CONFIG_SUBSYSTEM_MEMORY_IP_NAME"],
+		"YAML_FLASH_MEMORY_CONFIG_${MACHINE}_pn-fs-boot": ["=","!CONFIG_SUBSYSTEM_FLASH_MANUAL_SELECT","CONFIG_SUBSYSTEM_FLASH_IP_NAME"],
+		"FILESEXTRAPATHS_prepend_pn-fs-boot": ["=","1","${SYSCONFIG_PATH}:"],
+		"EXTRA_OEMAKE_APP_append_microblaze_pn-fs-boot": ["=","1","CFLAGS=-O3\\ -DCONFIG_FS_BOOT_OFFSET=${boot_offset}"],
+		"hsmoutf_pn-fs-boot": ["=","1","${WORKDIR}/offsets"],
+		"SRC_URI_append_pn-fs-boot": ["=","1"," file://config"],
+		"XSCTH_PROC_microblaze_pn-fs-boot": ["=","1","CONFIG_SUBSYSTEM_PROCESSOR0_IP_NAME"]
+	},
+	"device-tree": {
+		"XSCTH_PROC_microblaze_pn-device-tree": ["=","1","CONFIG_SUBSYSTEM_PROCESSOR0_IP_NAME"]
+	}
+}
+}

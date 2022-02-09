@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: IVAS Gstreamer Library
+Description: IVAS Gstreamer Library Implementation
+Requires: xrt jansson ivas-utils glib-2.0 gobject-2.0 gstreamer-1.0 gstreamer-base-1.0 gstreamer-allocators-1.0 gstreamer-video-1.0 uuid
+Version: 1.16.2
+Libs: -L${libdir} -lgstivasinfermeta-1.0 -lgstivasinpinfermeta-1.0
+Cflags: -I${includedir}
+
