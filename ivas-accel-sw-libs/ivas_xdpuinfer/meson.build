@@ -2,6 +2,13 @@ sources = [
   'src/ivas_xdpuinfer.cpp'
 ]
 
+sources +=['../cm_package/cmpk_segmentation.cpp',
+'../cm_package/cmpk_json_utils.cpp',
+'../cm_package/cmpk_ffc.cpp',
+'src/dpuinfer_partial_ffc.cpp',
+'src/dpuinfer_partial_model.cpp'
+]
+
 # ADD YOLOV3
 if get_option('YOLOV3') != '0'
   add_project_arguments('-DENABLE_YOLOV3', language : 'c')
@@ -86,6 +93,43 @@ else
   yolov2_dep = []
 endif
 
+
+#ADD ROADLINE
+if get_option('ROADLINE') != '0'
+  add_project_arguments('-DENABLE_ROADLINE', language : 'c')
+  add_project_arguments('-DENABLE_ROADLINE', language : 'cpp')
+  roadline_dep = cc.find_library('libvitis_ai_library-lanedetect', dirs : ['/usr/lib/'])
+  sources += [
+    'src/ivas_xroadline.cpp',
+  ]
+else
+  roadline_dep = []
+endif
+
+
+
+#ADD SEG
+if get_option('SEGMENTATION') != '0'
+  add_project_arguments('-DENABLE_SEGMENTATION', language : 'c')
+  add_project_arguments('-DENABLE_SEGMENTATION', language : 'cpp')
+  seg_dep = cc.find_library('libvitis_ai_library-segmentation', dirs : ['/usr/lib/'])
+  sources += [
+    'src/ivas_xsegmentation.cpp',
+  ]
+else
+  seg_dep = []
+endif
+
+
+
+
+
+
+#CMPK
+
+
+
+
 vartutil_dep = cc.find_library('vart-util', dirs : ['/usr/lib/'])
 xnnpp_dep = cc.find_library('vitis_ai_library-xnnpp', dirs : ['/usr/lib/'])
 vitisconfig_dep = cc.find_library('vitis_ai_library-model_config', dirs : ['/usr/lib/'])
@@ -98,7 +142,7 @@ ivas_xdpuinfer = library('ivas_xdpuinfer',
   sources,
   cpp_args : [gst_plugins_ivas_args, '-std=c++17'],
   include_directories : [configinc],
-  dependencies : [gstvideo_dep, gst_dep, xrt_dep, jansson_dep, ivasutils_dep, gstivasinfermeta_dep, ivasinputmeta_dep, opencv_dep, opencvcore_dep, vartutil_dep, xnnpp_dep, vitisconfig_dep, dputask_dep, classi_dep, yolov3_dep, facedetect_dep, ssd_dep, tfssd_dep, yolov2_dep, refinedet_dep],
+  dependencies : [gstvideo_dep, gst_dep, xrt_dep, jansson_dep, ivasutils_dep, gstivasinfermeta_dep, ivasinputmeta_dep, opencv_dep, opencvcore_dep, vartutil_dep, xnnpp_dep, vitisconfig_dep, dputask_dep, classi_dep, yolov3_dep, facedetect_dep, ssd_dep, tfssd_dep, yolov2_dep, refinedet_dep,roadline_dep,opencv_dep,seg_dep],
   install : true,
 )
 

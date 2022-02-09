@@ -35,6 +35,10 @@ static gboolean gst_inference_meta_init (GstMeta * meta,
 static void gst_inference_meta_free (GstMeta * meta, GstBuffer * buffer);
 static gboolean gst_inference_meta_transform (GstBuffer * transbuf,
     GstMeta * meta, GstBuffer * buffer, GQuark type, gpointer data);
+static gboolean
+gst_inference_meta_transform_new_meta (GstBuffer * dest, GstMeta * meta,
+    GstBuffer * buffer, GQuark type, gpointer data);
+
 #if 0
 static gboolean gst_classification_meta_init (GstMeta * meta,
     gpointer params, GstBuffer * buffer);
@@ -204,6 +208,10 @@ gst_classification_meta_free (GstMeta * meta, GstBuffer * buffer)
 }
 #endif
 
+
+
+
+
 static gboolean
 gst_inference_meta_transform_existing_meta (GstBuffer * dest, GstMeta * meta,
     GstBuffer * buffer, GQuark type, gpointer data)
@@ -229,10 +237,24 @@ gst_inference_meta_transform_existing_meta (GstBuffer * dest, GstMeta * meta,
       smeta->prediction->prediction_id);
 
   if (!pred) {
-    GST_ERROR
-        ("Predictions between metas do not match. Something really wrong happened");
-    g_return_val_if_reached (FALSE);
+    
+
+    // char *pstr;
+    //     /* Print the entire prediction tree */
+    // pstr = gst_inference_prediction_to_string (dmeta->prediction);
+    // printf("dst:\n%s\n",pstr);
+    // free (pstr);
+    // pstr = gst_inference_prediction_to_string (smeta->prediction);
+    // printf("src:\n%s\n",pstr);
+    // free (pstr);
+
+    gst_buffer_remove_meta (dest, (GstMeta *) dmeta);
+    return gst_inference_meta_transform_new_meta (dest, meta, buffer, type, data);
+    // GST_ERROR
+    //     ("Predictions between metas do not match. Something really wrong happened");
+    // g_return_val_if_reached (FALSE);
   }
+
 
   needs_scale = gst_inference_prediction_merge (smeta->prediction, pred);
 

@@ -163,6 +163,7 @@ gst_inference_prediction_append (GstInferencePrediction * self,
   g_return_if_fail (self);
   g_return_if_fail (child);
 
+  //核心函数
   GST_INFERENCE_PREDICTION_LOCK (self);
   GST_INFERENCE_PREDICTION_LOCK (child);
   g_node_append (self->predictions, child->predictions);

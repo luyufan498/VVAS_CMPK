@@ -1,6 +1,12 @@
 # Feature options for plugins without external deps
 option('ivas_xdpuinfer', type : 'feature', value : 'auto')
 option('ivas_xboundingbox', type : 'feature', value : 'auto')
+option('ivas_crop', type : 'feature', value : 'auto')
+option('ivas_postsegmentation', type : 'feature', value : 'auto')
+option('ivas_powerstatus', type : 'feature', value : 'auto')
+option('ivas_tempstatus', type : 'feature', value : 'auto')
+option('ivas_performancestatus', type : 'feature', value : 'auto')
+option('ivas_chart', type : 'feature', value : 'auto')
 
 # ivas_xdpuinfer Model selection
 option('YOLOV3', type: 'string', value: '1',
@@ -19,3 +25,8 @@ option('TFSSD', type: 'string', value: '1',
        description: 'Enable disable TFSSD models')
 option('YOLOV2', type: 'string', value: '1',
        description: 'Enable disable YOLOV2 models')
+option('ROADLINE', type: 'string', value: '1',
+       description: 'Enable disable ROADLINE models')
+option('SEGMENTATION', type: 'string', value: '1',
+       description: 'Enable disable SEGMENTATION models')
+

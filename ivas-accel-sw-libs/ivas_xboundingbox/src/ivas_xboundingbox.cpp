@@ -22,8 +22,10 @@
 #include <math.h>
 #include <ivas/ivas_kernel.h>
 #include <gst/ivas/gstinferencemeta.h>
-
+#include <gst/ivas/gstinferenceprediction.h>
 #include "ivas_xboundingbox.hpp"
+
+#include "../../cm_package/cmpk_segmentation.hpp"
 
 int log_level = LOG_LEVEL_WARNING;
 
@@ -142,10 +144,17 @@ overlay_node_foreach (GNode * node, gpointer kpriv_ptr)
       classes; classes = g_list_next (classes)) {
     classification = (GstInferenceClassification *) classes->data;
 
+    if(classification->class_id >= 10000)
+    {
+      LOG_MESSAGE (LOG_LEVEL_DEBUG, "unknow class id data");
+      return false;
+    }
+
     int idx = ivas_classification_is_allowed ((char *)
         classification->class_label, kpriv);
     if (kpriv->classes_count && idx == -1)
       continue;
+
 
     color clr;
     if (kpriv->classes_count) {
@@ -263,6 +272,30 @@ overlay_node_foreach (GNode * node, gpointer kpriv_ptr)
 
   return FALSE;
 }
+
+
+
+
+static gboolean
+free_class_foreach (GNode * node, gpointer kpriv_ptr)
+{
+  ivas_xoverlaypriv *kpriv = (ivas_xoverlaypriv *) kpriv_ptr;
+  struct overlayframe_info *frameinfo = &(kpriv->frameinfo);
+  LOG_MESSAGE (LOG_LEVEL_DEBUG, "enter");
+
+  GList *classes;
+  GstInferenceClassification *classification;
+  GstInferencePrediction *prediction = (GstInferencePrediction *) node->data;
+
+  g_list_free( prediction->classifications);
+  return FALSE;
+}
+
+
+
+
+
+
 
 extern "C"
 {
@@ -420,6 +453,14 @@ extern "C"
     GstInferenceMeta *infer_meta = NULL;
     char *pstr;
 
+
+    
+    std::shared_ptr<cmpk::SegmentationData> cmSegData;
+    cmSegData= cmpk::SegmentationData::create_debug();
+    int lastrecord = (int)cmSegData->readCustomData();
+    LOG_MESSAGE (LOG_LEVEL_WARNING, "xb prt:%d data:%d",cmSegData,lastrecord);
+
+
     ivas_xoverlaypriv *kpriv = (ivas_xoverlaypriv *) handle->kernel_priv;
     struct overlayframe_info *frameinfo = &(kpriv->frameinfo);
 
@@ -464,6 +505,17 @@ extern "C"
 
     g_node_traverse (infer_meta->prediction->predictions, G_PRE_ORDER,
         G_TRAVERSE_ALL, -1, overlay_node_foreach, kpriv);
+
+    
+
+
+    // g_node_traverse (infer_meta->prediction->predictions, G_PRE_ORDER,
+    //     G_TRAVERSE_ALL, -1, free_class_foreach, kpriv);
+    // g_node_destroy(infer_meta->prediction->predictions);
+    // // free(infer_meta->prediction);
+    // infer_meta->prediction = NULL;
+
+    // gst_inference_prediction_reset(infer_meta->prediction);
 
     return 0;
   }

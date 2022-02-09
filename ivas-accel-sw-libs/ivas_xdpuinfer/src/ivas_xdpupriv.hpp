@@ -23,14 +23,18 @@
 #include <stdio.h>
 #include <string>
 #include <opencv2/opencv.hpp>
-
 #include <ivas/ivas_kernel.h>
 #include <ivas/ivaslogs.h>
 #include <gst/ivas/gstinferencemeta.h>
 #include <gst/ivas/gstivasinpinfer.h>
+// #include "ivas_ffc.hpp"
+
+#include "../../cm_package/cmpk_ffc.hpp"
 
 using namespace cv;
 using namespace std;
+
+
 
 /*  #define INT_MAX 2147483647 */
 
@@ -44,7 +48,7 @@ public:
   virtual int requiredwidth (void) = 0;
   virtual int requiredheight (void) = 0;
   virtual int close (void) = 0;
-    virtual ~ ivas_xdpumodel () = 0;
+  virtual ~ ivas_xdpumodel () = 0;
 };
 
 struct performance_test
@@ -54,6 +58,10 @@ struct performance_test
   unsigned long last_displayed_frame = 0;
   long long timer_start;
   long long last_displayed_time;
+  //记录时间长度
+  double avgFPS = 0;
+
+  long long excution_time_dpu = 0;
 };
 typedef struct performance_test ivas_perf;
 
@@ -77,8 +85,11 @@ struct model_list
 {
   ivas_xdpumodel *model;
     std::string modelname;
+    std::string elfname;
+    
   labels *labelptr;
   int modelclass;
+  int priority;
 };
 typedef struct model_list model_list;
 
@@ -108,6 +119,16 @@ struct ivas_xkpriv
     std::string modelname;      /* contain name of model from json */
     std::string elfname;        /* contail model elf name */
   IVASVideoFormat modelfmt;     /* Format requirement of model */
+
+  cmpk::fifocom ffc;                 /* FIFO communication*/
+
+  int target_fps;               /*target FPS of hardware adjustment*/
+  int priority;                 /*The priority of the current model*/
+
+  bool xsetcaps_done = false; 
+  int interval_frames;          /*Set intervel frames to run dpu model*/
+
+  bool enable;
 };
 typedef struct ivas_xkpriv ivas_xkpriv;
 
