@@ -106,3 +106,11 @@
 2383	2485	1644434023630861001	ivas_chart/libivas_sensor.so	7a082acca00d9d01
 1	153	0	meson-install	8a30d733c8c39a0c
 2	149	0	meson-install	8a30d733c8c39a0c
+0	324	1644435607015742375	build.ninja	7ad8a6003b2f8b3c
+2	155	0	meson-install	8a30d733c8c39a0c
+2	151	0	meson-install	8a30d733c8c39a0c
+0	326	1644453309225639014	build.ninja	7ad8a6003b2f8b3c
+1	1398	1644453310649637141	ivas_postsegmentation/libivas_postsegmentation.so.p/src_ivas_postsegmentation.cpp.o	3dcdd27f85d5cb65
+1398	1498	1644453310749637009	ivas_postsegmentation/libivas_postsegmentation.so	dac11328d13fb962
+1	149	0	meson-install	8a30d733c8c39a0c
+1	150	0	meson-install	8a30d733c8c39a0c

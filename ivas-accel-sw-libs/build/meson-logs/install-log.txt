@@ -4,7 +4,4 @@
 ../../install/usr/lib/libivas_xboundingbox.so
 ../../install/usr/lib/libivas_crop.so
 ../../install/usr/lib/libivas_postsegmentation.so
-../../install/usr/lib/libivas_powerstatus.so
-../../install/usr/lib/libivas_tempstatus.so
-../../install/usr/lib/libivas_performancestatus.so
 ../../install/usr/lib/libivas_sensor.so

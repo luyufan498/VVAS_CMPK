@@ -325,9 +325,7 @@ int classifyScenariosfromSegC1(ivas_xoverlaypriv *kpriv,Mat segResult){
 int fifoComReportNB_segResult(cmpk::fifocom *ffc,int result,const char *info)
 {
     char buff[255] = {0};
-    sprintf(buff,"reportSeg,%f,%s\n",result,info);
-
-
+    sprintf(buff,"reportSeg,%f,%s",result,info);
     // return cmpk::ivas_fifocommuncation_send_raw(*ffc,buff,strlen(buff));
     return cmpk::fifoComWriteNB_string(ffc,buff);
 }
