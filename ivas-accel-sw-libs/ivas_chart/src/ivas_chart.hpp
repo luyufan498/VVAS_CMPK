@@ -75,6 +75,10 @@ struct ivas_perf
   int windowlen = 30; // 平滑帧数所用的窗口 （窗口大小会影响反应速度）
   //记录时间长度
   double avgFPS = 0;
+
+  bool iswrite2file = false;
+  string savefilepath;
+  void writefps2file();
 };
 
 

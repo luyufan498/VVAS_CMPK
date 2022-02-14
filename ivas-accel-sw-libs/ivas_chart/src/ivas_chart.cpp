@@ -7,6 +7,7 @@
 #include <thread>
 #include <math.h>
 #include <iostream>
+#include <fstream>
 extern "C"
 {
 #include <ivas/ivas_kernel.h>
@@ -15,6 +16,15 @@ extern "C"
 #include "ivas_chart.hpp"
 #include "../../cm_package/cmpk_json_utils.hpp"
 
+
+void ivas_perf::writefps2file(){
+    
+    ofstream outfile;
+    outfile.open(this->savefilepath.c_str(), ios::out | ios::trunc);
+    outfile<<this->avgFPS<<endl;
+    outfile.close();
+    
+}
 
 
 
@@ -48,7 +58,12 @@ performanceUpdate(ivas_xoverlaypriv * kpriv)
   if(kpriv->ffc_en){
       auto res = cmpk::fifoComReportNB_fps(&kpriv->ffc,pf->avgFPS,"perf_from_sensor_pulgin");
   }
-    
+
+
+  if(kpriv->perf.iswrite2file){
+      kpriv->perf.writefps2file();
+  }
+
   return 0;
 }
 
@@ -163,6 +178,9 @@ int32_t xlnx_kernel_init (IVASKernel *handle)
     JsonGet_bool(jconfig,&(kpriv->fps_en),"enable_fps",true,kpriv->log_level);
     JsonGet_int(jconfig,&(kpriv->perf.windowlen),"fps_window_len",30,kpriv->log_level);
 
+    JsonGet_bool(jconfig,&(kpriv->perf.iswrite2file),"enable_fps_w2f",false,kpriv->log_level);
+    JsonGet_string(jconfig,&(kpriv->perf.savefilepath),"fps_write_path","/home/petalinux/.temp/fps",kpriv->log_level);
+
     //管道地址
     XkprivGetJsonData_bool(jconfig,&(kpriv->ffc_en),"enable_fifocom",false,kpriv->log_level);
     XkprivGetJsonData_string(jconfig,&(kpriv->ffc.txpath),"ffc_tx","/home/petalinux/.temp/pf_tx", kpriv->log_level);
@@ -256,8 +274,6 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
         LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "FRAME FMT: %d",props.fmt);
         return 0;
     }
-
-
 
     // 输入的帧数据
     // 如果是 RGB 处理使用

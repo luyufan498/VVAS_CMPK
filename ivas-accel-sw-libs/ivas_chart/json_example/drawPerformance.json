@@ -16,7 +16,9 @@
 
         "enable_fps":true,
         "fps_window_len":30,
-        "enable_fifocom":true,
+        "enable_fifocom":false,
+        "enable_fps_w2f":true,
+        "fps_write_path":"/home/petalinux/.temp/fps",
         "ffc_tx":"/home/petalinux/.temp/pf_tx",
         "ffc_rx":"/home/petalinux/.temp/pf_rx",
         "ffc_description":"only work for fps",

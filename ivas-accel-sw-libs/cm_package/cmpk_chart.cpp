@@ -142,9 +142,9 @@ void chart::setSampleIntervalTime(int interval_time_ms){
 
 int chart::dataScale2Y(float data){
     if(data < this->show_min_val)
-        return 0;
-    if(data > this->show_max_val)
         return this->chart_height;
+    if(data > this->show_max_val)
+        return 0;
 
     float newdata = data - this->show_min_val;
     int y_converted = this->chart_height  -  newdata  * this->chart_height / (show_max_val - show_min_val);
@@ -163,6 +163,10 @@ int chart::fillYConvert(point *pre, point *nxt){
 
     for(auto i = 1; i< len ; i++){
         int newy = i/this->x_interval * (y_nxt - y_pre) + y_pre;
+
+        // if(newy < 20)
+        //     cout<<"WARNING: Y is too big y="<< newy <<",y_pre="<<y_pre<<",y_nxt="<<y_nxt<<",i="<<i<<",x_int="<<this->x_interval  << endl;
+
         pre->y_converted.push_back(newy);
     }
 
