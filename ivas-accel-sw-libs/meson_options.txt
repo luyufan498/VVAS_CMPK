@@ -4,6 +4,7 @@ option('ivas_xboundingbox', type : 'feature', value : 'auto')
 option('ivas_crop', type : 'feature', value : 'auto')
 option('ivas_postsegmentation', type : 'feature', value : 'auto')
 option('ivas_chart', type : 'feature', value : 'auto')
+option('ivas_pedpp', type : 'feature', value : 'auto')
 
 # ivas_xdpuinfer Model selection
 option('YOLOV3', type: 'string', value: '1',

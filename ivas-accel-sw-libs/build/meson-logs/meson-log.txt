@@ -1,4 +1,4 @@
-Build started at 2022-02-14T00:48:31.300299
+Build started at 2022-02-14T21:58:27.730973
 Main binary: /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/python3
 Build Options: -Dprefix=/usr -Dbackend=ninja
 Python system: Linux
@@ -323,8 +323,8 @@ Cached compiler stdout:
 Cached compiler stderr:
  
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpm5jh909g
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpm5jh909g/testfile.c -o /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpm5jh909g/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpx835c1o3
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpx835c1o3/testfile.c -o /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpx835c1o3/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -353,8 +353,8 @@ Library vitis_ai_library-model_config found: YES
 Library vitis_ai_library-dpu_task found: YES
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpqoe14c0p
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpqoe14c0p/testfile.c -o /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpqoe14c0p/output.exe -pipe --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lopencv_core -Wl,--end-group -Wl,--allow-shlib-undefined 
+Working directory:  /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmppdgy42eg
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-gcc -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/lib -L/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux/usr/lib /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmppdgy42eg/testfile.c -o /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmppdgy42eg/output.exe -pipe --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lopencv_core -Wl,--end-group -Wl,--allow-shlib-undefined 
 
 Code:
  int main(void) { return 0; }
@@ -378,12 +378,12 @@ Traceback (most recent call last):
 FileNotFoundError: [Errno 2] No such file or directory: 'hooks/pre-commit.hook'
 
 
-Build targets in project: 5
+Build targets in project: 6
 
 Found ninja-1.10.1 at /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/ninja
 Running compile:
-Working directory:  /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmp_zudoyss
-Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-g++ /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmp_zudoyss/testfile.cpp -o /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmp_zudoyss/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpmvzvf7sx
+Command line:  /home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/x86_64-petalinux-linux/usr/bin/aarch64-xilinx-linux/aarch64-xilinx-linux-g++ /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpmvzvf7sx/testfile.cpp -o /home/catmouse/VVAS/ivas-accel-sw-libs/build/meson-private/tmpmvzvf7sx/output.obj -pipe -c --sysroot=/home/catmouse/kv260-vitis/petalinux/sdk_env/sysroots/cortexa72-cortexa53-xilinx-linux -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  

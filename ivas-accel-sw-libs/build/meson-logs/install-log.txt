@@ -5,3 +5,4 @@
 ../../install/usr/lib/libivas_crop.so
 ../../install/usr/lib/libivas_postsegmentation.so
 ../../install/usr/lib/libivas_sensor.so
+../../install/usr/lib/libivas_pedpp.so
