@@ -14,7 +14,7 @@ extern "C"
 #include <gst/ivas/gstinferencemeta.h>
 }
 #include "ivas_chart.hpp"
-#include "../../cm_package/cmpk_json_utils.hpp"
+#include <cm_package/cmpk_json_utils.hpp>
 
 
 void ivas_perf::writefps2file(){

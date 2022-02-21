@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <ivas/ivaslogs.h>
-#include "../../cm_package/cmpk_json_utils.hpp"
+
 
 typedef struct _kern_priv
 {
@@ -127,7 +127,8 @@ int32_t xlnx_kernel_init(IVASKernel *handle)
     return 0;
 }
 
-//此处参数对应的是reid
+//此处参数对应的是reid 的参数
+// smart cam 的固件对应的 地址是不同的
 int32_t xlnx_kernel_start(IVASKernel *handle, int start, IVASFrame *input[MAX_NUM_OBJECT], IVASFrame *output[MAX_NUM_OBJECT])
 {
     ResizeKernelPriv *kernel_priv;
@@ -157,7 +158,6 @@ int32_t xlnx_kernel_done(IVASKernel *handle)
     do {
         ivas_register_read(handle, &val, sizeof(uint32_t),0x0); /* start */
         count++;
-        usleep(50);
         if (count > 1000000) {
             printf("ERROR: kernel done wait TIME OUT !!\n");
             return 0;

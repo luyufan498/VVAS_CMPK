@@ -26,6 +26,8 @@ glib_deps = [dependency('glib-2.0', version : glib_req, fallback: ['glib', 'libg
 gst_plugins_ivas_args = ['-DHAVE_CONFIG_H']
 
 configinc = include_directories('.')
+cmpksinc = include_directories('./cm_package')
+reidtrackinc=  include_directories('./reidtracker/include')
 
 api_version = '1.0'
 soversion = 0
@@ -135,7 +137,7 @@ python3 = import('python').find_installation()
 pkgconfig = import('pkgconfig')
 
 # common kernel libraries for PCIe & embedded platforms
-foreach kernel : ['ivas_xdpuinfer', 'ivas_xboundingbox','ivas_crop','ivas_postsegmentation','ivas_chart','ivas_pedpp']
+foreach kernel : ['ivas_xdpuinfer', 'ivas_xboundingbox','ivas_crop','ivas_postsegmentation','ivas_chart','ivas_pedpp','ivas_reid','ivas_runindicater']
   if not get_option(kernel).disabled()
     subdir(kernel)
   endif

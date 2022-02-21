@@ -205,7 +205,8 @@ extern "C"
     XkprivGetJsonData_int(jconfig,&(kpriv->target_fps),"target_fps",30,kpriv->log_level);
     XkprivGetJsonData_int(jconfig,&(kpriv->interval_frames),"interval_frames",1,kpriv->log_level);
 
-
+    JsonGet_bool(jconfig,&(kpriv->enable),"enable",true,kpriv->log_level);
+    
     //由ivas_xclass_to_num 来进行内部转换  
     // typedef int (*xkprivStringProcessAPI)(char *); 
     XkprivGetJsonData_string2Int(jconfig,&(kpriv->modelclass),"model-class",ivas_xclass_to_num,IVAS_XCLASS_NOTFOUND, kpriv->log_level);

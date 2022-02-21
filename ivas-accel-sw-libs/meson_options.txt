@@ -5,6 +5,8 @@ option('ivas_crop', type : 'feature', value : 'auto')
 option('ivas_postsegmentation', type : 'feature', value : 'auto')
 option('ivas_chart', type : 'feature', value : 'auto')
 option('ivas_pedpp', type : 'feature', value : 'auto')
+option('ivas_reid', type : 'feature', value : 'auto')
+option('ivas_runindicater', type : 'feature', value : 'auto')
 
 # ivas_xdpuinfer Model selection
 option('YOLOV3', type: 'string', value: '1',
@@ -28,3 +30,5 @@ option('ROADLINE', type: 'string', value: '1',
 option('SEGMENTATION', type: 'string', value: '1',
        description: 'Enable disable SEGMENTATION models')
 
+option('REID', type: 'string', value: '1',
+       description: 'Enable disable REID models')

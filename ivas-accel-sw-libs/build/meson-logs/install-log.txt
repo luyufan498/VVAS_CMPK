@@ -6,3 +6,5 @@
 ../../install/usr/lib/libivas_postsegmentation.so
 ../../install/usr/lib/libivas_sensor.so
 ../../install/usr/lib/libivas_pedpp.so
+../../install/usr/lib/libivas_reid.so
+../../install/usr/lib/libivas_runindicater.so

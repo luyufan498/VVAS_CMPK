@@ -96,6 +96,7 @@ struct ivas_xoverlaypriv
   mutable std::mutex mtx_;
   scenario_info scenarioinfo;
 
+
   int debug_param;
   cmpk::fifocom ffc;
 };

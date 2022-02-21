@@ -140,16 +140,18 @@ int drawOverlaySegmentationC1MapYUV(ivas_xoverlaypriv *kpriv, Mat segResult)
 
     int x,y, step = 2;
 
-    int yscale,xscale;
+    float yscale,xscale;
     
     
-    xscale =  segResult.cols / frameinfo->width_overlay;
-    yscale =  segResult.rows / frameinfo->height_overlay;
+    xscale = 1.0 * segResult.cols / frameinfo->width_overlay;
+    yscale = 1.0 * segResult.rows / frameinfo->height_overlay;
 
-    //浮点转换成整数计算
-    uint xscale_int = (uint)(xscale<<SCALE_FLOAT_TO_INT);
-    uint yscale_int = (uint)(yscale<<SCALE_FLOAT_TO_INT);
 
+
+    int lumaImgy,lumaImgx;
+    int chromay,chromax;
+    uint y_converted,x_converted;
+    int val;
 
     // 加锁：防止线程冲突
     // 循环视频的时候可能发生线程冲突，原因未知
@@ -159,49 +161,38 @@ int drawOverlaySegmentationC1MapYUV(ivas_xoverlaypriv *kpriv, Mat segResult)
     // 注意此处多线程被迫变成了单线程处理，将来可能考虑其他方案来优化
     std::lock_guard<std::mutex> lock(kpriv->mtx_);
 
-    // for(x=0;x<segResult.cols;x=x+step){
-    //   for(y=0;y<segResult.rows;y=y+step)
-
-    for(x=0;x<frameinfo->width_overlay;x=x+2){
-      for(y=0;y<frameinfo->height_overlay;y=y+2)
+    for(y=0;y<frameinfo->height_overlay;y=y+2){
+      y_converted = (uint)y*yscale;
+      for(x=0;x<frameinfo->width_overlay;x=x+2){
       {
         
-        uint x_converted = (uint)x*xscale_int>>SCALE_FLOAT_TO_INT;
-        uint y_converted = (uint)y*xscale_int>>SCALE_FLOAT_TO_INT;
-
-        int val =  segResult.at<uchar>(y_converted,x_converted);
-
-        result_cnt[val] ++;
-
+        x_converted = (uint)x*xscale;
+        val =  segResult.at<uchar>(y_converted,x_converted);
+        
+        // result_cnt[val] ++;
         if( kpriv->class_list[val].class_id < 0)
           continue;
-        // chromaImgy = (int) y * yscale;
-        // chromaImgx = (int) x * xscale ;
 
-        // chromaImgy = y/2 + kpriv->overlayframe_info.y_offset;
-        // chromaImgx = x/2 + kpriv->overlayframe_info.x_offset;
+        // lumaImgy = y + frameinfo->y_offset;
+        // lumaImgx = x + frameinfo->x_offset;
 
-        int lumaImgy = y + frameinfo->y_offset;
-        int lumaImgx = x + frameinfo->x_offset;
-
-        frameinfo->lumaImg.at<unsigned char>(lumaImgy, lumaImgx) = 
-                            kpriv->class_list[val].converted_color.y;
-
-        if(x%2==0 &&  y%2==0){
-            frameinfo->chromaImg.at<unsigned short>(lumaImgy/2, lumaImgx/2) = 
-                            kpriv->class_list[val].converted_color.uv;
+        chromay = (y + frameinfo->y_offset)/2;
+        chromax = (x + frameinfo->x_offset)/2;
         
-        }
+        // frameinfo->lumaImg.at<unsigned char>(lumaImgy, lumaImgx) = 
+        //                     kpriv->class_list[val].converted_color.y;
+        // if(x%2==0 &&  y%2==0){
+        //   frameinfo->chromaImg.at<unsigned short>(lumaImgy/2, lumaImgx/2) = kpriv->class_list[val].converted_color.uv;
+        // }
 
+        frameinfo->chromaImg.at<unsigned short>(chromay, chromax) = kpriv->class_list[val].converted_color.uv;
       }
     }
+    }
     // LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "Final w h :[%d,%d]",frameinfo->inframe->props.width,frameinfo->inframe->props.height);
-    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "Final xscale yscale :[%f,%f]",xscale,yscale);
+    // LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "Final xscale yscale :[%f,%f]",xscale,yscale);
     // LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "Final x y :[%d,%d]",chromaImgx,chromaImgy);
 
-  
-    for(auto i=0;i<20;i++)
-        LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "Res %d Cnt %d",i,result_cnt[i]);
 
     return 0;
 }
@@ -257,7 +248,8 @@ int drawOverylayTextInfoYUV(ivas_xoverlaypriv *kpriv, char*label_string){
 // 根据识别到的情况来判断场景
 int classifyScenariosfromSegC1(ivas_xoverlaypriv *kpriv,Mat segResult){
       
-    int result_cnt[30] = {0};
+    int result_cnt[30] ={0};
+
     for(auto x=0;x<segResult.cols;x++){
       for(auto y=0;y<segResult.rows;y++)
       {
@@ -303,15 +295,17 @@ int classifyScenariosfromSegC1(ivas_xoverlaypriv *kpriv,Mat segResult){
     if(car_related > people_related * 1.5)
     {
       LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "car scenario: [%d,%d]",car_related,people_related);
-      sprintf(buff, "car scenario: [%d,%d]",car_related,people_related);
+      sprintf(buff, "car: [%d,%d]",car_related,people_related);
       drawOverylayTextInfoYUV(kpriv,buff);
       return 0;
     }
     else
     {
       LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "people scenario: [%d,%d]",car_related,people_related);
-      sprintf(buff, "people scenario: [%d,%d]",car_related,people_related);
+      sprintf(buff, "people: [%d,%d]",car_related,people_related);
+      LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "exit");
       drawOverylayTextInfoYUV(kpriv,buff);
+      LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "exit");
       return 1;
     }       
 
@@ -378,10 +372,11 @@ int32_t xlnx_kernel_init (IVASKernel *handle)
     XkprivGetJsonData_int(jconfig,&(kpriv->scenarioinfo.y_offset),"info_y_offset",-10,kpriv->log_level);
     XkprivGetJsonData_int(jconfig,&(kpriv->scenarioinfo.x_offset),"info_x_offset",10,kpriv->log_level);
 
-    int font_size;
-    if(XkprivGetJsonData_int(jconfig,&(font_size),"font_size",1,kpriv->log_level)){
-      kpriv->font_size = font_size;
-    }
+    
+
+    JsonGet_float(jconfig,&(kpriv->font_size),"font_size",1,kpriv->log_level);
+      
+    
     // XkprivGetJsonData_int(jconfig,&(kpriv->font_size),"font_size",1,kpriv->log_level);
 
     XkprivGetJsonData_uint(jconfig,&(kpriv->font),"font",0,kpriv->log_level);
@@ -601,7 +596,7 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
           drawOverlaySegmentationC1MapYUV(kpriv,frameinfo->lastSegImg);
           int segclassRes= classifyScenariosfromSegC1(kpriv,frameinfo->lastSegImg);
 
-          fifoComReportNB_segResult(&kpriv->ffc,segclassRes,"segmentation");
+          // fifoComReportNB_segResult(&kpriv->ffc,segclassRes,"segmentation");
 
           auto end_time = get_time ();
           // 打印时间     
