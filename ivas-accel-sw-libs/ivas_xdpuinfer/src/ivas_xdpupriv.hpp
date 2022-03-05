@@ -128,7 +128,11 @@ struct ivas_xkpriv
   bool xsetcaps_done = false; 
   int interval_frames;          /*Set intervel frames to run dpu model*/
 
-  bool enable;
+  bool enable; // 
+
+  bool buff_en = true;
+  GstInferencePrediction *prediction_buff;
+
 };
 typedef struct ivas_xkpriv ivas_xkpriv;
 

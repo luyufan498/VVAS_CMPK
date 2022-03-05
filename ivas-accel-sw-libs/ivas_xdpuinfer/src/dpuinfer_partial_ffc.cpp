@@ -60,11 +60,56 @@ int fifoComCtr_DPUInvteral(ivas_xkpriv * kpriv)
 
     kpriv->interval_frames = value;
 
-    // cout<< "reset interval value "<<ffc->lines_buffer[1]<<" "<<value<<endl;
-    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "reset interval value %d",value);
+    cout<< "reset interval value "<<ffc->lines_buffer[1]<<" "<<value<<endl;
+    // LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "reset interval value %d",value);
 
     return 1;
 }
+
+
+int fifoComCtr_DPUenable(ivas_xkpriv * kpriv)
+{
+    std::string header = "pluginCtr_DPUenable";
+
+    cmpk::fifocom *ffc = &kpriv->ffc;
+    if(ffc->lines_buffer.size()<(1+1))
+    {
+        return -1;
+    } 
+
+    if(ffc->lines_buffer[0].compare(header))
+    {
+        return -1;
+    }
+
+    string num_string = ffc->lines_buffer[1];
+    int value = atoi(num_string.c_str());
+
+    //非法值
+    if(value < 0 or value > 1)
+    {
+        LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level, "ffc:invail interval value %s --> %d",ffc->lines_buffer[1].c_str(),value);
+        return -1;
+    }
+
+    if(value == 1)
+    {
+        cout<< "enable dpu inference:"<<kpriv->modelname<<endl;
+        kpriv->enable = true;
+    }
+    else
+    {
+        cout<< "disable dpu inference:"<<kpriv->modelname<<endl;
+        kpriv->enable = false;
+    }
+
+    
+    LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "DPU enable: %d",value);
+
+    return 1;
+}
+
+
 
 
 /**
@@ -84,6 +129,7 @@ int fifoComCtr_DynamicModel(fifocom *ffc){
 
     if(ffc->lines_buffer[0].compare(header))
     {
+        cout<<"woring header:"<<ffc->lines_buffer[0]<<endl;
         return false;
     }
 
@@ -97,10 +143,12 @@ int fifoComCtr_DynamicModel(fifocom *ffc){
     if (!fileexists (ffc->modelinfo.model_path))
     {
         //检查一下第三个参数是不是路径
+        cout<< "ERROR Model Read:"<<ffc->modelinfo.model_name<<" "<<ffc->modelinfo.model_class
+    <<" "<<ffc->modelinfo.model_path<<endl;
         return false;
     }
 
-    cout<< "FIFO Model Read"<<ffc->modelinfo.model_name<<" "<<ffc->modelinfo.model_class
+    cout<< "FIFO Model Read:"<<ffc->modelinfo.model_name<<" "<<ffc->modelinfo.model_class
     <<" "<<ffc->modelinfo.model_path<<endl;
 
     return true;
@@ -144,7 +192,7 @@ int loadDynamicModelfromFFC(ivas_xkpriv * kpriv)
       // 创建一个，确保没问题再移植
       tmpxkpriv->model = ivas_xinitmodel (tmpxkpriv, tmpxkpriv->modelclass);
 
-      LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level,"enter %p",tmpxkpriv->model);
+    //   LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level,"enter %p",tmpxkpriv->model);
 
 
       if(tmpxkpriv->model == NULL){
@@ -197,5 +245,6 @@ void fifoComCtrAll(ivas_xkpriv * kpriv){
 
     loadDynamicModelfromFFC(kpriv);
     fifoComCtr_DPUInvteral(kpriv);
+    fifoComCtr_DPUenable(kpriv);
 
 }

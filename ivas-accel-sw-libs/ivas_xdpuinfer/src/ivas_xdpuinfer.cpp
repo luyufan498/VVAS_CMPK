@@ -162,7 +162,6 @@ performanceTestRecord(ivas_xkpriv * kpriv)
 
 
 
-
 extern "C"
 {
 
@@ -179,6 +178,8 @@ extern "C"
     XkprivGetJsonData_bool(jconfig,&(kpriv->performance_test),"performance_test",false, kpriv->log_level);
     XkprivGetJsonData_bool(jconfig,&(kpriv->need_preprocess),"need_preprocess",true, kpriv->log_level);
     XkprivGetJsonData_bool(jconfig,&(kpriv->enable),"enable",true, kpriv->log_level);
+    XkprivGetJsonData_bool(jconfig,&(kpriv->buff_en),"buff_en",true, kpriv->log_level);
+
 
     // 类型是枚举，没办法直接处理
     string tmp_videofmt;
@@ -205,8 +206,8 @@ extern "C"
     XkprivGetJsonData_int(jconfig,&(kpriv->target_fps),"target_fps",30,kpriv->log_level);
     XkprivGetJsonData_int(jconfig,&(kpriv->interval_frames),"interval_frames",1,kpriv->log_level);
 
-    JsonGet_bool(jconfig,&(kpriv->enable),"enable",true,kpriv->log_level);
-    
+   
+
     //由ivas_xclass_to_num 来进行内部转换  
     // typedef int (*xkprivStringProcessAPI)(char *); 
     XkprivGetJsonData_string2Int(jconfig,&(kpriv->modelclass),"model-class",ivas_xclass_to_num,IVAS_XCLASS_NOTFOUND, kpriv->log_level);
@@ -238,69 +239,6 @@ extern "C"
           "Init ivas_xinitmodel failed for %s", kpriv->modelname.c_str ());
       goto err;
     }
-
-
-// //---------------------------------------------------
-//     // if run time enable, try to read the model list
-//     if(kpriv->run_time_model){
-    
-//       // added by catmouse
-//       // model lists
-//       karray = json_object_get (jconfig, "model-lists");
-      
-//       if (!karray) {
-//         LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level, "failed to find dymical lists");
-//         goto err;
-//       }    
-//       if (!json_is_array (karray)) {
-//         LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level,"labels key is not of array type");
-//         goto err;
-//       }
-
-//       //LOOP
-//       for (unsigned int index = 0; index < json_array_size (karray); index++){
-//           jmodel = json_array_get (karray, index);
-//           if (!jmodel) {
-//             LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level,"failed to get model object");
-//           continue;
-//           }
-
-//           ivas_xkpriv tmpxkpriv;
-//           model_list mlist;
-          
-//           XkprivGetJsonData_string(jmodel,&(tmpxkpriv.modelpath),"model-path",kpriv->modelpath.c_str(), kpriv->log_level);
-//           XkprivGetJsonData_string(jmodel,&(tmpxkpriv.modelname),"model-name","", kpriv->log_level);
-//           tmpxkpriv.modelfmt = kpriv->modelfmt;
-//           // tmpxkpriv.elfname = modelexits (&tmpxkpriv);
-
-//           XkprivGetJsonData_string2Int(jconfig,&(tmpxkpriv.modelclass),"model-class",ivas_xclass_to_num,IVAS_XCLASS_NOTFOUND, kpriv->log_level);
-//           XkprivGetJsonData_string(jmodel,&(tmpxkpriv.modelname),"model-class","", kpriv->log_level);
-//           XkprivGetJsonData_int(jconfig,&(tmpxkpriv.priority),"priority",0,kpriv->log_level);
-
-//           tmpxkpriv.elfname = modelexits (&tmpxkpriv);
-//           if (tmpxkpriv.elfname.empty ()) {
-//              LOG_MESSAGE (LOG_LEVEL_ERROR, kpriv->log_level,
-//               "model:%s load failed\n",tmpxkpriv.modelname.c_str());
-//              continue;
-//           }
-//           mlist.elfname = tmpxkpriv.elfname;
-//           mlist.modelclass = tmpxkpriv.modelclass;
-//           mlist.modelname = tmpxkpriv.modelname;
-//           mlist.model = tmpxkpriv.model;
-//           mlist.priority = tmpxkpriv.priority;
-//           // mlist.labelptr = tmpxkpriv.labelptr;
-//           kpriv->mlist.push_back (mlist);
-//       }
-//       LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level,"model list init end");
-//       for (int i = 0; i < int (kpriv->mlist.size ()); i++) 
-//         {
-//           LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level,
-//               "Model list [%d]:%s  %s",i,kpriv->mlist[i].modelname.c_str(),kpriv->mlist[i].elfname.c_str());
-//         }
-
-
-//     }
-// //---------------------------------------------------
 
     handle->kernel_priv = (void *) kpriv;
     return true;
@@ -371,12 +309,16 @@ extern "C"
 
     LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "enter");
     
+
+    // 每次都要读，确保清空缓冲区
+    // cmpk::fifoComRead(ffc);
+    // loadDynamicModelfromFFC(kpriv);
+    //开始进行
+
+    fifoComCtrAll(kpriv);
     // 加入关闭插件的功能
     // 打开插件的时候需要注意顺序的问题
-    if(!kpriv->enable)
-    {
-      return true;
-    }
+
 
     // 需要把infer meta的指针拿出来给 DPU存结果
     infer_meta = (GstInferenceMeta *) gst_buffer_add_meta ((GstBuffer *)inframe->app_priv, gst_inference_meta_get_info (), NULL);
@@ -386,92 +328,12 @@ extern "C"
       return -1;
     } 
 
-    // std::shared_ptr<cmpk::SegmentationData> cmSegData;
-    // cmSegData= cmpk::SegmentationData::create_debug();
-    // cmSegData->writeCustomData(frame_cnt);
-    // LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, "xd prt:%d data:%d",cmSegData,frame_cnt);
-    // if(frame_cnt ++ % 30 == 0){
-    //     int ffc = ivas_fifocommuncation_send("Report\n",7,IVAS_FFC_REPORT_FPS);
-    //     LOG_MESSAGE (LOG_LEVEL_INFO, kpriv->log_level, "FFC: %d",ffc);
-    // }
-
-    // // 读取外部线程控制的参数
-    // cmpk::IvasFFCControlType ffc_ctrtpye = cmpk::ivas_fifocommuncation_read_ctr(kpriv->ffc);
-    // //通讯传递结果 根据传递结果进行控制
-    // if(ffc_ctrtpye == cmpk::IVAS_FFC_CONTROL_REPORT_MODEL)
-    // { 
-    //     char report_info[64] = {0};
-
-    //     sprintf(report_info,"model-name:%s,priority:%d",
-    //       kpriv->modelname.c_str (),
-    //       kpriv->priority);
-
-    //     cmpk::ivas_fifocommuncation_send_raw(kpriv->ffc,report_info,strlen(report_info));
-    //     LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, "%s",report_info);
-    //     LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, "Model Required image size: W=%d H=%d"
-    //                                       , kpriv->model->requiredwidth(),kpriv->model->requiredheight());
-    // }
-    // else
-    // if(ffc_ctrtpye == cmpk::IVAS_FFC_CONTROL_HIGHER_PRF || ffc_ctrtpye == cmpk::IVAS_FFC_CONTROL_LOWER_PRE)
-    // {
-    //   LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, "Dynamic enter");
-    //   if(kpriv->run_time_model)
-    //   {
-    //     bool found = false;
-        
-    //     int highest_priority = 999;
-    //     int lowest_priority = -999;
-        
-    //     int target_priority = kpriv->priority;
-
-    //     int found_index = 0;
-    //     for (i = 0; i < int (kpriv->mlist.size ()); i++)
-    //     {
-    //         if(ffc_ctrtpye == cmpk::IVAS_FFC_CONTROL_HIGHER_PRF && 
-    //         kpriv->mlist[i].priority > target_priority && 
-    //         kpriv->mlist[i].priority < highest_priority){
-    //           highest_priority = kpriv->mlist[i].priority;
-    //           found = true;        
-    //           found_index = i;
-    //         }
-            
-    //         if(ffc_ctrtpye == cmpk::IVAS_FFC_CONTROL_LOWER_PRE &&
-    //         kpriv->mlist[i].priority < target_priority &&
-    //         kpriv->mlist[i].priority > lowest_priority )
-    //         {
-    //           lowest_priority =  kpriv->mlist[i].priority;
-    //           found = true;        
-    //           found_index = i;
-    //         }    
-    //     }
-
-    //     if (found) {
-    //       LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, "Dynamic Found: [%d]",found_index);
-          
-    //       i = found_index;
-    //       kpriv->priority = kpriv->mlist[i].priority;
-    //       // kpriv->model = kpriv->mlist[i].model;
-    //       // kpriv->labelptr = kpriv->mlist[i].labelptr;
-    //       kpriv->modelclass = kpriv->mlist[i].modelclass;
-    //       kpriv->modelname = kpriv->mlist[i].modelname;
-    //       kpriv->elfname = kpriv->mlist[i].elfname;
-
-    //       ivas_clean_currentmodel(kpriv);
-    //       kpriv->model = ivas_xinitmodel (kpriv, kpriv->modelclass);
-
-    //        LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, "New ELF: [%s]",kpriv->elfname.c_str());
-
-
-    //       LOG_MESSAGE (LOG_LEVEL_WARNING, kpriv->log_level, 
-    //       "switch to model-name:%s,priority:%d",
-    //         kpriv->modelname.c_str (),
-    //         kpriv->priority);
-    //     } 
-
-    //   }
-
-    // }
-
+    
+    if(!kpriv->enable)
+    {
+      infer_meta->prediction->reserved_5 = (void*) -1;
+      return true;
+    }
 
 
    //判断帧格式 如果不是 RGB 或者 BRG 表示无法处理
@@ -491,12 +353,6 @@ extern "C"
       inframe->props.width,inframe->props.height, width, height);
       // return false; //TODO
     }
-
-    // 每次都要读，确保清空缓冲区
-    // cmpk::fifoComRead(ffc);
-    // loadDynamicModelfromFFC(kpriv);
-    //开始进行
-    fifoComCtrAll(kpriv);
 
     //运行DPU
     ret = ivas_xrunmodel (kpriv, image, infer_meta, inframe);

@@ -245,7 +245,31 @@ int drawOverylayTextInfoYUV(ivas_xoverlaypriv *kpriv, char*label_string){
 }
 
 
-// 根据识别到的情况来判断场景
+#define RESULT_LEN 20
+void writeResult2File(ivas_xoverlaypriv *kpriv,int *results){
+    if(!kpriv->result2file)
+      return;
+    ofstream outfile;
+    outfile.open(kpriv->result_output_file.c_str(), ios::out | ios::trunc);
+    outfile<<results[0];
+    for(auto i=1;i<RESULT_LEN;i++){
+      outfile<<","<<results[i];
+    }
+    outfile<<endl;
+    
+    outfile.close();
+}
+
+
+int fifoComReportNB_segResult(cmpk::fifocom *ffc,int result,const char *info)
+{
+    char buff[255] = {0};
+    sprintf(buff,"reportSeg,%d,%s",result,info);
+    return cmpk::ivas_fifocommuncation_send_raw(*ffc,buff,strlen(buff));
+    // return cmpk::fifoComWriteNB_string(ffc,buff);
+}
+
+
 int classifyScenariosfromSegC1(ivas_xoverlaypriv *kpriv,Mat segResult){
       
     int result_cnt[30] ={0};
@@ -261,11 +285,11 @@ int classifyScenariosfromSegC1(ivas_xoverlaypriv *kpriv,Mat segResult){
       }
     }
 
+    writeResult2File(kpriv,result_cnt);
     //0 road 1 sidewalk 2 building 3 wall 4 fence
     //5 pole 6 traffic light 7 traffic sign 8 vegetation 9 terrain 
     //10 sky 11 person 12 rider 13 car 14 truck 
     //15 bus 16 train 17 motorcycle 18 bicycle 19 background
-
 
     int sumpixls = segResult.cols * segResult.rows;
     int car_related = result_cnt[13] + result_cnt[14]+ result_cnt[15] +result_cnt[17];
@@ -316,14 +340,6 @@ int classifyScenariosfromSegC1(ivas_xoverlaypriv *kpriv,Mat segResult){
 
 
 
-int fifoComReportNB_segResult(cmpk::fifocom *ffc,int result,const char *info)
-{
-    char buff[255] = {0};
-    sprintf(buff,"reportSeg,%f,%s",result,info);
-    // return cmpk::ivas_fifocommuncation_send_raw(*ffc,buff,strlen(buff));
-    return cmpk::fifoComWriteNB_string(ffc,buff);
-}
-
 
 
 extern "C"
@@ -360,6 +376,11 @@ int32_t xlnx_kernel_init (IVASKernel *handle)
     
     LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "enter");
 
+        
+    XkprivGetJsonData_string(jconfig,&(kpriv->ffc.txpath),"ffc_txpath",FIFO_WRITE, kpriv->log_level);
+    XkprivGetJsonData_string(jconfig,&(kpriv->ffc.rxpath),"ffc_rxpath",FIFO_READ, kpriv->log_level);
+
+
     XkprivGetJsonData_int(jconfig,&(kpriv->frameinfo.y_offset),"y_offset_abs",200,kpriv->log_level);
     XkprivGetJsonData_int(jconfig,&(kpriv->frameinfo.x_offset),"x_offset_abs",100,kpriv->log_level);
 
@@ -373,6 +394,8 @@ int32_t xlnx_kernel_init (IVASKernel *handle)
     XkprivGetJsonData_int(jconfig,&(kpriv->scenarioinfo.x_offset),"info_x_offset",10,kpriv->log_level);
 
     
+    JsonGet_string(jconfig,&(kpriv->result_output_file),"write_file_path","/home/petalinux/.temp/segres",kpriv->log_level);
+    JsonGet_bool(jconfig,&(kpriv->result2file),"enable_w2f",false,kpriv->log_level);
 
     JsonGet_float(jconfig,&(kpriv->font_size),"font_size",1,kpriv->log_level);
       
@@ -586,7 +609,7 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
 
     if(props.fmt == IVAS_VFMT_Y_UV8_420)
       {
-          //并不是长宽，因为做了行对齐
+          //行对齐
           frameinfo->lumaImg.create (input[0]->props.height, input[0]->props.stride,CV_8UC1);
           frameinfo->lumaImg.data = (unsigned char *) input[0]->vaddr[0];
           frameinfo->chromaImg.create (input[0]->props.height / 2, input[0]->props.stride / 2, CV_16UC1);
@@ -596,7 +619,7 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
           drawOverlaySegmentationC1MapYUV(kpriv,frameinfo->lastSegImg);
           int segclassRes= classifyScenariosfromSegC1(kpriv,frameinfo->lastSegImg);
 
-          // fifoComReportNB_segResult(&kpriv->ffc,segclassRes,"segmentation");
+          fifoComReportNB_segResult(&kpriv->ffc,segclassRes,"segmentation");
 
           auto end_time = get_time ();
           // 打印时间     

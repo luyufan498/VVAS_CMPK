@@ -61,7 +61,7 @@ void drawICON(ivas_xoverlaypriv *kpriv){
     framecnt ++;
 
     struct overlayframe_info *frameinfo = &(kpriv->frameinfo);
-    if(kpriv->status == 1)
+    if(kpriv->status == 0)
     {
         color clr = {0,0,255};
         unsigned char yScalar;
@@ -101,14 +101,14 @@ static int fifoComCtr_DynamicModel_reid(ivas_xoverlaypriv *kpriv){
     
     if(ffc->lines_buffer[1].compare("1"))
     {
-        kpriv->status = 1;   
+        kpriv->status = 0;   
     }
     else
     {
-        kpriv->status = 0;   
+        kpriv->status = 1;   
     }
     
-    cout<< "Get UI ctr:"<<kpriv->status<<" buff:"<<ffc->lines_buffer[1]<<endl;
+    cout<< "Get UI ctr:"<<kpriv->status<<" buff:"<<ffc->lines_buffer[1]<<"       "<<endl;
     return true;
 }
 

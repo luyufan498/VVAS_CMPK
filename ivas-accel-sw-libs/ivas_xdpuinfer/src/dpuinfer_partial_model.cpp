@@ -531,6 +531,17 @@ ivas_xinitmodel (ivas_xkpriv * kpriv, int modelclass)
   return model;
 }
 
+
+
+
+
+void cloneInferBuff(ivas_xkpriv * kpriv, GstInferenceMeta * infer_meta){
+  if(!kpriv->buff_en) return;
+  kpriv->prediction_buff = gst_inference_prediction_copy(infer_meta->prediction);
+}
+
+
+
 /**
  * ivas_xrunmodel() - Run respective model
  */
@@ -544,7 +555,12 @@ ivas_xrunmodel (ivas_xkpriv * kpriv, cv::Mat & image,
 
   // 检查是否需要跳过某些帧
   if(frame_cnt%kpriv->interval_frames!=0)
+  {
+    if(kpriv->buff_en)
+      infer_meta->prediction = gst_inference_prediction_copy(kpriv->prediction_buff);
     return true;
+  }
+    
   
   auto start_time = get_time ();
 
@@ -556,6 +572,11 @@ ivas_xrunmodel (ivas_xkpriv * kpriv, cv::Mat & image,
         kpriv->modelname.c_str ());
     return -1;
   }
+
+  if(kpriv->buff_en)
+      kpriv->prediction_buff = gst_inference_prediction_copy(infer_meta->prediction);
+
+
 
   auto end_time = get_time ();
   kpriv->pf.excution_time_dpu = end_time - start_time;

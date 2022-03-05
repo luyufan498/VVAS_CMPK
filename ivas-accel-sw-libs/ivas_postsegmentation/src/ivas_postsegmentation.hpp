@@ -99,6 +99,9 @@ struct ivas_xoverlaypriv
 
   int debug_param;
   cmpk::fifocom ffc;
+
+  std::string result_output_file;
+  bool result2file;
 };
 
 

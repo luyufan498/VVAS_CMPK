@@ -111,6 +111,7 @@ struct ivas_xoverlaypriv
   bool chart_title_en;
   bool chart_line_en;
   bool ffc_en;
+  int  info_start_line = 0;
 
   cmpk::fifocom ffc;
   cmpk::chart *cmpkchart;

@@ -87,8 +87,8 @@ static int parse_rect(IVASKernel * handle, int start,
                                                           gst_inference_meta_api_get_type()));
     if (infer_meta == NULL)
     {
-        printf("No inference info for ReID.");
-        return false;
+        // printf("No inference info for ReID.");
+        return 2;
     }
 
     GstInferencePrediction *root = infer_meta->prediction;
@@ -267,7 +267,11 @@ int32_t xlnx_kernel_start(IVASKernel *handle, int start /*unused */,
   /* get metadata from input */
 
   ivas_ms_roi roi_data;
-  parse_rect(handle, start, input, output, roi_data);
+  auto res = parse_rect(handle, start, input, output, roi_data);
+  if(res==2){
+    return 0;
+  }
+    
 
   m__TIC__(getfeat);
   for (uint32_t i = 0; i < roi_data.nobj; i++) {

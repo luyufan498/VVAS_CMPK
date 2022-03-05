@@ -55,6 +55,14 @@ struct  yuv_color
   /* data */
 };
 
+enum{
+  DATAINFOTYPE_MAX_MIN_AVG,
+  DATAINFOTYPE_MAX_MIN_AVG_CURR,
+  DATAINFOTYPE_AVG_CURR,
+  DATAINFOTYPE_CURR
+};
+
+
 
 struct chart
 {
@@ -72,15 +80,16 @@ private:
     int fillYConvert(point *pre, point *nxt);
     int calFucX2Y(uint x);
     int dataScale2Y(float data);
-    int drawStr(const char *str, int lnNum,cv::Mat lumaImg, cv::Mat chromaImg);
+    
     int calFucIndex2XY(int index, int *x, int *y);
 
 protected:
     float data_min = 0;
     float data_max = 0;
     float data_avg = 0;
-    rgb_color line_rgb,label_rgb;
-    yuv_color line_yuv,label_yuv;
+    float data_curr = 0;
+    rgb_color line_rgb,label_rgb,legend_rgb;
+    yuv_color line_yuv,label_yuv,legend_yuv;
 
     uint sample_interval_time = 30;
     uint sample_interval_frames = 10;
@@ -134,6 +143,7 @@ public:
      */
     void setLineColor(uint red,uint green, uint blue);
     void setLableColor(uint red,uint green, uint blue);
+    void setLegendColor(uint red,uint green, uint blue);
     void setSampleIntervalTime(int interval_time_ms);
 
 
@@ -169,12 +179,17 @@ public:
     std::string title_txt;
     int title_pos_x = 0;
     int title_pos_y = 0;
+    int line_offset = 0;
     float font_size;
     uint font;
 
+    bool title_en = true;
+    bool datainfo_en = true;
+    int  datainfo_type = DATAINFOTYPE_MAX_MIN_AVG;
 
     int drawTitle(cv::Mat lumaImg, cv::Mat chromaImg);
     int drawDataInfo(cv::Mat lumaImg, cv::Mat chromaImg);
+    int drawStr(const char *str, int lnNum,cv::Mat lumaImg, cv::Mat chromaImg,yuv_color strYUV);
 
     /* data */
 };

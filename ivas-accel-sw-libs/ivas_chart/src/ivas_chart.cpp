@@ -76,12 +76,13 @@ long getDataFromCustomSensor_long(ivas_xoverlaypriv * kpriv){
 	if(fp == NULL)
 	{
 		printf("unable to open %s\n",kpriv->sensor.path.c_str());
-		return -2;
+		return -1;
 	}
 	fscanf(fp,"%ld",&data);
 	fclose(fp);
 	return (data);
 }
+
 float getDataFromCustomSensor_float(ivas_xoverlaypriv * kpriv){
     FILE *fp;
 	float data;
@@ -89,9 +90,24 @@ float getDataFromCustomSensor_float(ivas_xoverlaypriv * kpriv){
 	if(fp == NULL)
 	{
 		printf("unable to open %s\n",kpriv->sensor.path.c_str());
-		return -2;
+		return -1;
 	}
+
+    fseek(fp, 0L, SEEK_END);
+    auto sz = ftell(fp);
+    if(sz <= 0){
+        fclose(fp);
+        return -2;
+    }
+        
+    fseek(fp, 0L, SEEK_SET);
+
 	fscanf(fp,"%f",&data);
+    if(data < 0){
+        printf("error data:%f size:%d\n",data,sz);
+        fclose(fp);
+        return -3;
+    }
 	fclose(fp);
 	return (data)*kpriv->sensor.scale;
 }
@@ -195,9 +211,14 @@ int32_t xlnx_kernel_init (IVASKernel *handle)
     JsonGet_int(jconfig,&(kpriv->cmpkchart->chart_abs_y),"chart_y",200,kpriv->log_level);
     JsonGet_int(jconfig,&(kpriv->cmpkchart->chart_abs_x),"chart_x",100,kpriv->log_level);
 
+    
     // 标题文字设置
-    JsonGet_bool(jconfig,&(kpriv->chart_title_en),"enable_info_overlay",false,kpriv->log_level);
-    JsonGet_bool(jconfig,&(kpriv->chart_anlysis_en),"enable_analysis_overlay",false,kpriv->log_level);
+    JsonGet_bool(jconfig,&(kpriv->cmpkchart->title_en),"enable_info_overlay",false,kpriv->log_level);
+    JsonGet_bool(jconfig,&(kpriv->cmpkchart->datainfo_en),"enable_analysis_overlay",false,kpriv->log_level);
+    
+    JsonGet_int(jconfig,&(kpriv->cmpkchart->line_offset),"info_line_offset",0,kpriv->log_level);
+    JsonGet_int(jconfig,&(kpriv->cmpkchart->datainfo_type),"analysis_type",0,kpriv->log_level);
+ 
     // 自定义标题
     JsonGet_string(jconfig,&(kpriv->cmpkchart->title_txt),"title","<Title Name>:",kpriv->log_level);
     //限定文字相对背景的位置
@@ -207,6 +228,12 @@ int32_t xlnx_kernel_init (IVASKernel *handle)
     JsonGet_float(jconfig,&( kpriv->cmpkchart->font_size),"font_size",1,kpriv->log_level);
     JsonGet_rgb(jconfig,&red,&green,&blue,"label_color",0x000000,kpriv->log_level);
     kpriv->cmpkchart->setLableColor(red,green,blue);
+    kpriv->cmpkchart->setLegendColor(red,green,blue);
+    if(JsonGet_rgb(jconfig,&red,&green,&blue,"legend_color",0x000000,kpriv->log_level))
+    {
+        kpriv->cmpkchart->setLegendColor(red,green,blue);
+    }
+
 
     // 数据 绘图 设置    
 
@@ -257,6 +284,9 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
     //指向的都是相同的东西只是为了操作方便
     IVASFrame *inframe =  frameinfo->inframe;
     IVASFrameProps props = inframe->props;
+    cmpk::chart *cmpkchart = kpriv->cmpkchart; 
+
+
     LOG_MESSAGE (LOG_LEVEL_DEBUG, kpriv->log_level, "enter");
 
 
@@ -304,10 +334,25 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
 
     // 耗时 450 us 左右 太耗时了
     start_time_all =  get_time ();
-    if(kpriv->chart_title_en)
-        kpriv->cmpkchart->drawTitle(frameinfo->lumaImg,frameinfo->chromaImg);
-    if(kpriv->chart_anlysis_en)
-        kpriv->cmpkchart->drawDataInfo(frameinfo->lumaImg,frameinfo->chromaImg);
+
+    kpriv->cmpkchart->drawTitle(frameinfo->lumaImg,frameinfo->chromaImg);
+    kpriv->cmpkchart->drawDataInfo(frameinfo->lumaImg,frameinfo->chromaImg);
+
+    // int lnum = 0;
+    // if(kpriv->chart_title_en)
+    // {
+    //     kpriv->cmpkchart->drawTitle(frameinfo->lumaImg,frameinfo->chromaImg);
+    //     lnum ++;
+    // }
+    // if(kpriv->chart_anlysis_en)
+    // {
+    //     char buff[60]={0};
+    //     sprintf(buff,"Max:%3.2f Min:%3.2f Avg:%3.2f",cmpkchart->data_max,cmpkchart->data_min,this->data_avg);
+    //     kpriv->cmpkchart->drawStr(buff,lnum,lumaImg,chromaImg)
+    //     // kpriv->cmpkchart->drawDataInfo(frameinfo->lumaImg,frameinfo->chromaImg);
+
+    // }
+        
 
     auto drawtxttime = get_time() - start_time_all;
 

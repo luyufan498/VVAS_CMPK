@@ -26,14 +26,15 @@ extern "C"
 #include <ivas/ivas_kernel.h>
 #include <gst/ivas/gstinferencemeta.h>
 }
+#include <cm_package/cmpk_json_utils.hpp>
 
-enum
-{
-  LOG_LEVEL_ERROR,
-  LOG_LEVEL_WARNING,
-  LOG_LEVEL_INFO,
-  LOG_LEVEL_DEBUG
-};
+// enum
+// {
+//   LOG_LEVEL_ERROR,
+//   LOG_LEVEL_WARNING,
+//   LOG_LEVEL_INFO,
+//   LOG_LEVEL_DEBUG
+// };
 
 #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 #define LOG_MESSAGE(level, ...) {\
@@ -56,6 +57,11 @@ enum
 }
 static int log_level = LOG_LEVEL_WARNING;
 
+struct ivas_cropkpriv{ 
+    int log_level = LOG_LEVEL_ERROR;
+    int resize_width;
+    int resize_height; 
+};
 
 
 #define MAX_CHANNELS 40
@@ -96,10 +102,14 @@ static int Crop_one_bgr(
     int ind
 )
 {
+    ivas_cropkpriv *kpriv =(ivas_cropkpriv *) handle->kernel_priv;
     //分配参数的属性
     IVASFrameProps out_props = {0, };
-    out_props.width = 80;
-    out_props.height = 176;
+    // out_props.width = 80;
+    // out_props.height = 176;
+    out_props.width = kpriv->resize_width;
+    out_props.height = kpriv->resize_height;
+    
     out_props.fmt = IVAS_VFMT_BGR8;
     uint32_t size = FRAME_SIZE(out_props.width, out_props.height);
 
@@ -239,6 +249,12 @@ static int parse_rect(IVASKernel * handle, int start,
         return false;
     }
 
+
+    if ((int64_t)infer_meta->prediction->reserved_5 == -1){
+        return false;
+    } 
+
+
     GstInferencePrediction *root = infer_meta->prediction;
 
     roi_data.nobj = 0;
@@ -268,7 +284,7 @@ static int parse_rect(IVASKernel * handle, int start,
         }
     }
     g_slist_free(collects);
-    return 0;
+    return true;
 }
 extern "C"
 {
@@ -280,7 +296,10 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
     int ret;
     uint32_t value = 0;
     ivas_ms_roi roi_data;
-    parse_rect(handle, start, input, output, roi_data);
+    bool res = parse_rect(handle, start, input, output, roi_data);
+    if(!res)
+        return 0;
+
    /* set descriptor */
     xlnx_multiscaler_descriptor_create (handle, input, output, roi_data);
 
@@ -289,7 +308,13 @@ int32_t xlnx_kernel_start (IVASKernel *handle, int start /*unused */,
 
 int32_t xlnx_kernel_init (IVASKernel *handle)
 {
+    ivas_cropkpriv *kpriv = (ivas_cropkpriv *) calloc(1,sizeof(ivas_cropkpriv));
+    json_t *jconfig = handle->kernel_config;
+    JsonGet_int(jconfig,&(kpriv->log_level),"debug_level",LOG_LEVEL_ERROR,0);
+    JsonGet_int(jconfig,&(kpriv->resize_width),"reszie_width",80,kpriv->log_level);
+    JsonGet_int(jconfig,&(kpriv->resize_height),"resize_height",176,kpriv->log_level);
     handle->is_multiprocess = 1;        
+    handle->kernel_priv = (void *) kpriv;
     return 0;
 }
 

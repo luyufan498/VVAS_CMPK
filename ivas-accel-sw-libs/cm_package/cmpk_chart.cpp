@@ -114,6 +114,22 @@ void chart::setLableColor(uint red,uint green, uint blue)
 }
 
 
+void chart::setLegendColor(uint red,uint green, uint blue)
+{
+    this->legend_rgb.red =red;
+    this->legend_rgb.green = green;
+    this->legend_rgb.blue = blue;
+
+    cv::Mat YUVmat;
+    cv::Mat BGRmat (2, 2, CV_8UC3, Scalar (red, green, blue));
+    cv::cvtColor (BGRmat, YUVmat, cv::COLOR_BGR2YUV_I420);
+
+    this->legend_yuv.y = YUVmat.at < uchar > (0, 0);
+    this->legend_yuv.uv = YUVmat.at < uchar > (2, 0) << 8 | YUVmat.at < uchar > (2, 1);
+}
+
+
+
 
 
 /**
@@ -196,9 +212,11 @@ void chart::updateDataAnalysis(){
             min = data;
     }
 
+    
     this->data_min = min;
     this->data_max = max;
     this->data_avg = sum / (int)this->points.size();
+    this->data_curr = this->points[this->points.size()-1].data;
 }
 
 
@@ -309,6 +327,12 @@ int chart::update(void *usrptr){
 
         if(this->frame_cnt - this->timestamp_frame >= this->sample_interval_frames){
             auto sampleval = this->sampleFuc(usrptr);
+            if(sampleval < 1){
+                
+                // cout<<"cmpk error:"<<sampleval<<endl;
+                return -1;
+            }
+                
             this->pushNewData(sampleval);
             this->timestamp_frame = this->frame_cnt;
         }
@@ -322,7 +346,10 @@ int chart::update(void *usrptr){
         
         if(now_ms - timestamp_ms  >=  this->sample_interval_time)
         {
-            this->pushNewData(this->sampleFuc(usrptr));
+            auto sampleval = this->sampleFuc(usrptr);
+            if(sampleval < 0)
+                return -1;
+            this->pushNewData(sampleval);
             this->timestamp_ms = now_ms;
         }
        
@@ -610,29 +637,53 @@ int chart::drawChartYUVLine_unprotected(cv::Mat lumaImg, cv::Mat chromaImg, int 
 
 
 
-int chart::drawStr(const char *str, int lnNum,cv::Mat lumaImg, cv::Mat chromaImg){
+int chart::drawStr(const char *str, int lnNum,cv::Mat lumaImg, cv::Mat chromaImg, yuv_color strYUV){
     int baseline;
     Size textsize;
     textsize = getTextSize ("A", this->font, this->font_size, 1, &baseline);
 
     int x = this->title_pos_x + this->chart_abs_x;
     int y = 1.5 * (lnNum + 1) * textsize.height +  this->title_pos_y + this->chart_abs_y;
-    putText (lumaImg,   str, cv::Point (x,y), this->font, this->font_size,Scalar (this->label_yuv.y), 1, 1);
-    putText (chromaImg, str, cv::Point ((x)/ 2,y/2), this->font,this->font_size / 2, Scalar (this->label_yuv.uv), 1, 1);
+   
+    putText (lumaImg,   str, cv::Point (x,y), this->font, this->font_size,Scalar (strYUV.y), 1, 1);
+    putText (chromaImg, str, cv::Point ((x)/ 2,y/2), this->font,this->font_size / 2, Scalar (strYUV.uv), 1, 1);
     return 0;
 }
 
 
 
 int chart::drawTitle(cv::Mat lumaImg, cv::Mat chromaImg){
- 
-    return  this->drawStr(this->title_txt.c_str(),0,lumaImg,chromaImg);
+    if(!this->title_en)
+        return 0;
+    return  this->drawStr(this->title_txt.c_str(),this->line_offset,lumaImg,chromaImg,this->label_yuv);
 }
 
-int chart::drawDataInfo(cv::Mat lumaImg, cv::Mat chromaImg){    
+int chart::drawDataInfo(cv::Mat lumaImg, cv::Mat chromaImg){  
+    if(!this->datainfo_en)
+        return 0;
     char buff[60]={0};
-    sprintf(buff,"Max:%3.2f Min:%3.2f Avg:%3.2f",this->data_max,this->data_min,this->data_avg);
-    return  this->drawStr(buff,1,lumaImg,chromaImg);
+
+    switch (this->datainfo_type)
+    {
+    case DATAINFOTYPE_MAX_MIN_AVG:
+        sprintf(buff,"Max:%3.2f Min:%3.2f Avg:%3.2f",this->data_max,this->data_min,this->data_avg);
+        break;
+    case DATAINFOTYPE_MAX_MIN_AVG_CURR:
+        sprintf(buff,"Max:%3.2f Min:%3.2f Avg:%3.2f Curr:%3.2f",this->data_max,this->data_min,this->data_avg,this->data_curr);
+        break;
+    case DATAINFOTYPE_AVG_CURR:
+        sprintf(buff,"Avg:%3.2f Curr:%3.2f",this->data_avg,this->data_curr);
+        break;
+    case DATAINFOTYPE_CURR:
+        sprintf(buff,"Curr:%3.2f",this->data_curr);
+        break;
+    
+    default:
+        sprintf(buff,"Max:%3.2f Min:%3.2f Avg:%3.2f",this->data_max,this->data_min,this->data_avg);
+        break;
+    }
+    
+    return  this->drawStr(buff,this->line_offset + 1,lumaImg,chromaImg,this->legend_yuv);
 }
 
 
