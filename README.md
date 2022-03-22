@@ -1,12 +1,14 @@
+# New added codes:
+
+The project is modified from VVAS. The new added codes is in **ivas-accel-sw-libs** folder.
+
+
+
+
+
 # Vitis™ Video Analytics SDK
 
-### To clone this repo:
-
-```
-git clone https://github.com/Xilinx/VVAS.git
-```
-
-## View the [Documentation](https://xilinx.github.io/VVAS/)
+This part didn't change.
 
 ## Folder Structure
 
